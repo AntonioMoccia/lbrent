@@ -2,7 +2,7 @@ import Slider from '../components/Slider'
 import Map from '../components/Map'
 function ChiSiamo() {
   return (
-    <div className=' min-h-screen bg-black text-white flex flex-col gap-8 items-center justify-center'>
+    <section className=' min-h-screen bg-black text-white flex flex-col gap-8 items-center justify-center'>
       {/**TESTP DI CHI SIAMO */}
       <h1 className=' uppercase text-center  font-bold text-2xl'>Chi siamo</h1>
       <p className=' px-6 max-w-screen-lg text-center font-thin '>
@@ -33,7 +33,7 @@ function ChiSiamo() {
       <div className=' max-w-md lg:max-w-4xl mt-10 '>
         <Slider />
       </div>
-   </div>
+   </section>
   )
 }
 

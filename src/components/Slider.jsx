@@ -10,7 +10,7 @@ import 'swiper/css';
 
 function Slider() {
     return (
-        <div className='w-full'>
+        <div className='w-full min-h-60'>
             <Swiper
                 spaceBetween={0}
                 slidesPerView={1}

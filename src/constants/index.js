@@ -3,6 +3,7 @@ import HeroImage from '../assets/hero-image.png'
 import SlideImage1 from '../assets/slide-1.png'
 import SlideImage2 from '../assets/slide-2.png'
 import SlideImage3 from '../assets/slide-3.png'
+import CardImage from '../assets/cardImage.png'
 const MENU_LINKS = [
     {
         label: 'Home',
@@ -37,9 +38,85 @@ const SLIDER = [
         img: SlideImage3
     }
 ]
+const FOOTER_MENU = [
+    {
+        label: 'Terms',
+        href: "/"
+    },
+    {
+        label: 'Privacy',
+        href: "/"
+    },
+    {
+        label: 'Cookie',
+        href: "/"
+    },
+]
+
+const Cards = [
+    {
+        title: "BMWM 440 COUPE 1",
+        image: CardImage,
+        neopatentato: true,
+        posti: 2,
+        carburante: 'Benzina',
+        cambio: 'A'
+    },
+    {
+        title: "BMWM 440 COUPE 2",
+        image: CardImage,
+        neopatentato: true,
+        posti: 2,
+        carburante: 'Benzina',
+        cambio: 'A'
+    },
+    {
+        title: "BMWM 440 COUPE 3",
+        image: CardImage,
+        neopatentato: true,
+        posti: 2,
+        carburante: 'Benzina',
+        cambio: 'A'
+    },
+    {
+        title: "BMWM 440 COUPE 4",
+        image: CardImage,
+        neopatentato: true,
+        posti: 2,
+        carburante: 'Benzina',
+        cambio: 'A'
+    },
+    {
+        title: "BMWM 440 COUPE 5",
+        image: CardImage,
+        neopatentato: true,
+        posti: 2,
+        carburante: 'Benzina',
+        cambio: 'A'
+    },
+    {
+        title: "BMWM 440 COUPE 5",
+        image: CardImage,
+        neopatentato: true,
+        posti: 2,
+        carburante: 'Benzina',
+        cambio: 'A'
+    },
+    {
+        title: "BMWM 440 COUPE 5",
+        image: CardImage,
+        neopatentato: true,
+        posti: 2,
+        carburante: 'Benzina',
+        cambio: 'A'
+    }
+]
+
 export {
     Logo,
     MENU_LINKS,
     HeroImage,
-    SLIDER
+    SLIDER,
+    FOOTER_MENU, 
+    Cards
 }
