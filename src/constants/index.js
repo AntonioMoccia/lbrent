@@ -57,7 +57,7 @@ const Cards = [
     {
         title: "BMWM 440 COUPE 1",
         image: CardImage,
-        neopatentato: true,
+        neopatentato: false,
         posti: 2,
         carburante: 'Benzina',
         cambio: 'Automatic'
@@ -73,7 +73,7 @@ const Cards = [
     {
         title: "BMWM 440 COUPE 3",
         image: CardImage,
-        neopatentato: true,
+        neopatentato: false,
         posti: 2,
         carburante: 'Benzina',
         cambio: 'Automatic'
@@ -97,7 +97,7 @@ const Cards = [
     {
         title: "BMWM 440 COUPE 5",
         image: CardImage,
-        neopatentato: true,
+        neopatentato: false,
         posti: 2,
         carburante: 'Benzina',
         cambio: 'Automatic'
