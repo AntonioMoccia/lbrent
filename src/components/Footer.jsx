@@ -5,8 +5,8 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 function Footer() {
     return (
-        <footer className=' h-[200px] max-h-[200px]'>
-            <div className=' h-1/2  flex justify-between items-center px-4'>
+        <footer className=' h-[150px] max-h-[200px] pt-5 lg:flex lg:flex-col lg:justify-center lg:items-center'>
+            <div className=' h-1/2 lg:w-[80%] flex justify-between items-center px-4'>
                 <div>
                     <Image src={Logo} alt='Alt logo' width={100} height={68} />
                 </div>
@@ -14,14 +14,14 @@ function Footer() {
                     <ul className=' flex gap-2'>
                         {
                             FOOTER_MENU.map((item, i) => (
-                                <li className=' text-sm' key={i}>{item.label}</li>
+                                <li className=' text-xs lg:text' key={i}>{item.label}</li>
                             ))
                         }
                     </ul>
                 </div>
                 <div className=' flex gap-2'>
-                    <FaInstagram className='text-2xl bg-transparent text-black' />
-                    <FaWhatsapp className='text-2xl bg-transparent text-black' />
+                    <FaInstagram className='text-xl bg-transparent text-black' />
+                    <FaWhatsapp className='text-xl bg-transparent text-black' />
                 </div>
             </div>
             <div className='w-full flex justify-center items-center'>

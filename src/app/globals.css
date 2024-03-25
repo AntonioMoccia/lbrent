@@ -34,4 +34,8 @@
   flex-direction: column;
 }
 .swiper{
+  max-width: 100vw;
+ }
+ .red{
+  background-color: red;
  }
