@@ -60,7 +60,8 @@ const Cards = [
         neopatentato: false,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Automatic',
+        segment:'sportiva'
     },
     {
         title: "BMWM 440 COUPE 2",
@@ -68,7 +69,8 @@ const Cards = [
         neopatentato: true,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Automatic',
+        segment:'sportiva'
     },
     {
         title: "BMWM 440 COUPE 3",
@@ -76,7 +78,8 @@ const Cards = [
         neopatentato: false,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Automatic',
+        segment:'sportiva'
     },
     {
         title: "BMWM 440 COUPE 4",
@@ -84,7 +87,8 @@ const Cards = [
         neopatentato: true,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Automatic',
+        segment:'crossover'
     },
     {
         title: "BMWM 440 COUPE 5",
@@ -92,7 +96,8 @@ const Cards = [
         neopatentato: true,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Manual',
+        segment:'sportiva'
     },
     {
         title: "BMWM 440 COUPE 5",
@@ -100,7 +105,8 @@ const Cards = [
         neopatentato: false,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Automatic',
+        segment:'sportiva'
     },
     {
         title: "BMWM 440 COUPE 5",
@@ -108,7 +114,8 @@ const Cards = [
         neopatentato: true,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Manual',
+        segment:'crossover'
     },
     {
         title: "BMWM 440 COUPE 5",
@@ -116,7 +123,8 @@ const Cards = [
         neopatentato: true,
         posti: 2,
         carburante: 'Benzina',
-        cambio: 'Automatic'
+        cambio: 'Automatic',
+        segment:'sportiva'
     }
 ]
 

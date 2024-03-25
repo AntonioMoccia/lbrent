@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 import { LuUser2 } from "react-icons/lu";
-interface CardProps {
+export interface CardProps {
   title: string;
   image: StaticImageData;
   neopatentato: boolean;
@@ -33,13 +33,12 @@ function Card({
       </div>
 
       <div className=" w-full gap-1 relative top-0 flex flex-wrap">
-
-          <div className="text-[0.5rem] bg-gray-200 px-2 py-1 rounded-lg flex items-center justify-around gap-2">
-            <span>
-              <LuUser2 />
-            </span>
-            {posti}
-          </div>
+        <div className="text-[0.5rem] bg-gray-200 px-2 py-1 rounded-lg flex items-center justify-around gap-2">
+          <span>
+            <LuUser2 />
+          </span>
+          {posti}
+        </div>
 
         <div className="flex font-semibold gap-1">
           <div className=" text-[0.5rem] bg-gray-200 px-2 py-1 rounded-lg">

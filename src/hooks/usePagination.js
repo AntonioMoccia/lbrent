@@ -4,7 +4,7 @@ function usePagination({data,dataPerPage,currentPage}) {
 
     const [indexOfLastPost, setIndexOfLastPost] = useState(0)
     const [indexOfFirstPost, setIndexOfFirstPost] = useState(0)
-    const [currentCars, setCurrentCars] = useState([])
+    const [currentItems, setCurrentItems] = useState([])
     const [pagesNumber, setPagesNumber] = useState(0)
  
     useEffect(()=>{
@@ -17,14 +17,14 @@ function usePagination({data,dataPerPage,currentPage}) {
         setIndexOfLastPost(indexOfLastPostTemp)
         setIndexOfFirstPost(indexOfFirstPostTemp)
         setIndexOfFirstPost(indexOfFirstPostTemp)
-        setCurrentCars(currentCarsTemp)
+        setCurrentItems(currentCarsTemp)
         setPagesNumber(pagesNumberTemp)
     },[data,dataPerPage,currentPage])
 
     return {
         indexOfLastPost,
         indexOfFirstPost,
-        currentCars,
+        currentItems,
         pagesNumber
     }
 
