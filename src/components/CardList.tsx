@@ -4,7 +4,7 @@ import Card, { CardProps } from "./Card";
 import usePagination from "@/hooks/usePagination";
 import SearchBar from "./SearchBar";
 import Pagination from "./Pagination";
-
+import { map, uniqBy } from 'lodash'
 function CardList({ Cards }: { Cards: CardProps[] }) {
   const [filteredCars, setFilteredCars] = useState(Cards);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +36,26 @@ function CardList({ Cards }: { Cards: CardProps[] }) {
       setFilteredCars(tempCars);
     }
   };
+  const CheckedFields = [
+    'carburante',
+    'cambio',
+    'segment'
+  ]
+
+  /**
+   * 
+   * ChacklistField
+   * ChackListValues
+   * Ogni field ha una checklist a se stante con rispettivi valori univoci
+   */
+
+  const uniq = map(uniqBy(Cards,CheckedFields[0]),(value:any)=>{
+    return value[CheckedFields[0]]
+  })
+  console.log(uniq);
+  
+  
+  
 
   const handlePageClick = (event: any) => {
     setCurrentPage(event.selected + 1);

@@ -68,7 +68,7 @@ const Cards = [
         image: CardImage,
         neopatentato: true,
         posti: 2,
-        carburante: 'Benzina',
+        carburante: 'Diesel',
         cambio: 'Automatic',
         segment:'sportiva'
     },
