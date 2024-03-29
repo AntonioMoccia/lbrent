@@ -1,3 +1,4 @@
+import Form from "@/components/Forms/Form";
 import Hero from "@/components/Hero";
 import { HeroImage } from "@/constants";
 import React from "react";
@@ -28,6 +29,7 @@ function LungoTermine() {
       </section>
       <section>
         {/** react use form e zod for validation */}
+        <Form />
       </section>
     </div>
   );

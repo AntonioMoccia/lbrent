@@ -11,16 +11,17 @@ function CardList({ Cards }: { Cards: CardProps[] }) {
   const [carsPerPage, setCarsPerPage] = useState(6);
 
   useEffect(() => {
-    const onResize = (e : Event) => {
+    const onResize = (e?: Event) => {
       if (window.innerWidth < 768) {
         setCarsPerPage(6);
       } else {
         setCarsPerPage(9);
       }
     };
+    onResize()
     const resizeEvent = window.addEventListener("resize",onResize);
     return () => window.removeEventListener("resize", onResize);
-  });
+  },[]);
 
   const onSearchChange = (search: string) => {
     if (search == "") {
