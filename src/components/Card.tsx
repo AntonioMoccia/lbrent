@@ -20,7 +20,7 @@ function Card({
 }: CardProps) {
   return (
     <div className=" bg-black rounded-2xl items-start flex flex-col justify-between py-3 px-2 border-2 max-h-60 max-w-60 border-white min-h-60">
-      <div className=" relative top-0">
+      <div className=" relative top-0 min-h-[3rem]">
         <h1 className=" text-[70%] font-bold text-white">{title}</h1>
         {neopatentato && (
           <span className=" text-[0.5rem]  bg-lime-400 px-2 py-1 rounded-md">

@@ -1,7 +1,26 @@
-import Form from "@/components/Forms/Form";
+import DittaIndividualeForm from "@/components/Forms/DittaIndividualeForm";
 import Hero from "@/components/Hero";
+import {
+  Accordion,
+  Item,
+} from "@/components/accordion";
 import { HeroImage } from "@/constants";
 import React from "react";
+
+const AccordionItems = [
+  {
+    label: "Ditta individuale",
+    content: <DittaIndividualeForm />,
+  },
+  {
+    label: "Libero professionista",
+    content: <DittaIndividualeForm />,
+  },
+  {
+    label: "Società persone",
+    content: <DittaIndividualeForm />,
+  },
+];
 
 function LungoTermine() {
   return (
@@ -12,7 +31,7 @@ function LungoTermine() {
         h1={
           <>
             NOLEGGIO
-            <br /> BREVE TERMINE
+            <br /> LUNGO TERMINE
           </>
         }
         p={""}
@@ -22,14 +41,24 @@ function LungoTermine() {
           Scopri i vantaggi del noleggio a lungo termine e goditi
           l&apos;esperienza di avere un&apos;auto sempre a tua disposizione,
           abbattendo i costi legati all&apos;acquisto, alla proprietà e alla
-          manutenzione. <br /><br />Con il noleggio a lungo termine, potrai beneficiare di
-          un canone mensile fisso concordato e scegliere il modello di auto che
-          preferisci tra una vasta gamma di opzioni sul mercato
+          manutenzione. <br />
+          <br />
+          Con il noleggio a lungo termine, potrai beneficiare di un canone
+          mensile fisso concordato e scegliere il modello di auto che preferisci
+          tra una vasta gamma di opzioni sul mercato
         </p>
       </section>
-      <section>
+      <section className="w-full flex justify-center items-center">
         {/** react use form e zod for validation */}
-        <Form />
+        <div className=" md:w-[80%] w-full">
+          <Accordion type="single" collapsible className="w-full">
+            {AccordionItems.map((item: any, index: number) => (
+              <Item label={item.label} itemNumber={index + 1} key={index}>
+                {item.content}
+              </Item>
+            ))}
+          </Accordion>
+        </div>
       </section>
     </div>
   );

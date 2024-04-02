@@ -11,11 +11,11 @@ const MENU_LINKS = [
     },
     {
         label: 'Breve termine',
-        href: "/"
+        href: "/breve-termine"
     },
     {
         label: 'Lungo termine',
-        href: "/"
+        href: "/lungo-termine"
     },
 ]
 const SLIDER = [

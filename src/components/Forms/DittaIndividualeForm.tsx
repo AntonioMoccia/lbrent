@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import * as z from "zod";
@@ -41,56 +42,64 @@ function DittaIndividualeForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className=" grid gap-2 grid-cols-2 px-5 py-5">
-          <UploadFile
-            error={errors.identity_front1?.message as string}
-            value={file1}
-            inputProps={register("identity_front1")}
-            htmlFor="identity_front1"
-          />
-          <UploadFile
-            error={errors.identity_front2?.message as string}
-            value={file2}
-            inputProps={register("identity_front2")}
-            htmlFor="identity_front2"
-          />
-          <UploadFile
-            error={errors.identity_front3?.message as string}
-            value={file3}
-            inputProps={register("identity_front3")}
-            htmlFor="identity_front3"
-          />
-          <UploadFile
-            error={errors.identity_front4?.message as string}
-            value={file4}
-            inputProps={register("identity_front4")}
-            htmlFor="identity_front4"
-          />
-        </div>
-        <h1 className="w-full px-5 font-bold">Compila il form</h1>
-        <div className=" w-full justify-center items-center mt-5 flex-col gap-2 flex">
-          <TextField
-            type="text"
-            error={errors.name?.message as string}
-            value={name}
-            inputProps={register("name")}
-          />
-          <TextField
-            type="text"
-            error={errors.cognome?.message as string}
-            value={cognome}
-            inputProps={register("cognome")}
-          />
-        </div>
-        <div className=" mt-10 w-full flex justify-center items-center">
-          <input
-            type="submit"
-            className=" bg-black px-20 py-3 rounded-lg text-white"
-          />
-        </div>
-      </form>
+    <div className=" w-full flex justify-center items-center">
+      <div className=" max-w-screen-md">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-2 h-auto w-full">
+            <UploadFile
+              testo="Documento di identità"
+              error={errors.identity_front1?.message as string}
+              value={file1}
+              inputProps={register("identity_front1")}
+              htmlFor="identity_front1"
+            />
+            <UploadFile
+              testo="Documento di identità"
+              error={errors.identity_front2?.message as string}
+              value={file2}
+              inputProps={register("identity_front2")}
+              htmlFor="identity_front2"
+            />
+            <UploadFile
+              testo="Documento di identità"
+              error={errors.identity_front3?.message as string}
+              value={file3}
+              inputProps={register("identity_front3")}
+              htmlFor="identity_front3"
+            />
+            <UploadFile
+              testo="Documento di identità"
+              error={errors.identity_front4?.message as string}
+              value={file4}
+              inputProps={register("identity_front4")}
+              htmlFor="identity_front4"
+            />
+          </div>
+
+          <h1 className="w-full px-5 font-bold mt-5">Compila il form</h1>
+
+          <div className=" w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+            <TextField
+              type="text"
+              error={errors.name?.message as string}
+              value={name}
+              inputProps={register("name")}
+            />
+            <TextField
+              type="text"
+              error={errors.cognome?.message as string}
+              value={cognome}
+              inputProps={register("cognome")}
+            />
+          </div>
+          <div className=" mt-10 w-full flex justify-center items-center">
+            <input
+              type="submit"
+              className=" bg-black px-20 py-3 rounded-xl text-white"
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
