@@ -7,7 +7,7 @@ import CardImage from '../assets/cardImage.png'
 const MENU_LINKS = [
     {
         label: 'Home',
-        href: "/"
+        href: "#"
     },
     {
         label: 'Breve termine',

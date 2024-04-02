@@ -50,7 +50,7 @@ function LungoTermine() {
       </section>
       <section className="w-full flex justify-center items-center">
         {/** react use form e zod for validation */}
-        <div className=" md:w-[80%] w-full">
+        <div className=" md:w-[80%] w-full max-w-screen-mpconstd">
           <Accordion type="single" collapsible className="w-full">
             {AccordionItems.map((item: any, index: number) => (
               <Item label={item.label} itemNumber={index + 1} key={index}>

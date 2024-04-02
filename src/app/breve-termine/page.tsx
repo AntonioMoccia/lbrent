@@ -1,17 +1,8 @@
-import Card from "@/components/Card";
 import Hero from "@/components/Hero";
 import { Cards, HeroImage } from "@/constants";
-import { useEffect, useState } from "react";
-import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
-import ReactPaginate from "react-paginate";
-import usePagination from "@/hooks/usePagination";
-import SearchBar from "@/components/SearchBar";
 import CardList from "@/components/CardList";
-import Pagination from "@/components/Pagination";
+
 function BreveTermine() {
-
-
-
 
   return (
     <div>

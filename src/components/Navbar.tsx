@@ -1,63 +1,70 @@
 "use client";
 import Image from "next/image";
 import { Logo, MENU_LINKS } from "../constants";
-import { IoMenu } from "react-icons/io5";
+import { IoMenu,IoClose } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import gsap from "gsap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-
-
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname()
+  const pathname = usePathname();
   const handleButtonClick = () => {
     console.log("click");
 
     setOpen(!open);
   };
-  useEffect(()=>{
+  useEffect(() => {
     console.log(pathname);
-  },[pathname])
+  }, [pathname]);
 
   return (
     <header className=" bg-white h-20 ">
-      <nav className=" flex items-center px-2 h-full justify-around">
-        <div className=" absolute flex justify-between bg-white z-50 h-20 w-full items-center ">
+      <nav className=" flex items-center h-full justify-around px-5">
+        <div className=" absolute lg:relative flex justify-between bg-white z-50 h-20 w-[90%] lg:max-w-[50vw]  items-center ">
           <div className=" w-auto">
-           <Link href={'/'}>
-            <Image src={Logo} alt="Alt logo" width={100} height={68} />
-           </Link>
+            <Link href={"/"}>
+              <Image src={Logo} alt="Alt logo" width={100} height={68} />
+            </Link>
           </div>
           <div
             onClick={handleButtonClick}
             className=" lg:hidden flex  justify-center items-center w-10 h-10 rounded-lg bg-black text-white"
           >
-            <IoMenu />
+           {open ? <IoClose /> : <IoMenu />}
           </div>
         </div>
         <div
           className={clsx(
-            "nav-links duration-300 md:static absolute py-5 bg-white md:min-h-fit left-0 md:w-auto w-full flex justify-center items-center px-5",
+            "nav-links duration-300 md:static lg:top-0 absolute lg:relative py-5 lg:py-0 bg-white md:min-h-fit left-0 md:w-1/2 w-full flex justify-center items-center px-5",
             open ? "top-20" : "top-[-100%] "
           )}
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] w-full gap-8">
             {MENU_LINKS.map((item, index) => (
               <li key={index} className=" text-center">
-                <Link onClick={()=>setOpen(false)} className={clsx(
-                  "hover:bg-black hover:px-[0.5rem] hover:rounded-lg hover:text-white hover:py-2",
-                  pathname == item.href ? "bg-black px-[0.5rem] rounded-lg text-white py-2" : ""
-                )} href={item.href}>
+                <Link
+                  onClick={() => setOpen(false)}
+                  className={clsx(
+                    "hover:bg-black px-3 rounded-xl text-xs font-medium hover:text-white py-3",
+                    pathname == item.href
+                      ? "bg-black px-[0.5rem] rounded-xl text-white py-3"
+                      : ""
+                  )}
+                  href={item.href}
+                >
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
+          <div className=" md:flex md:gap-2 hidden ">
+            <FaWhatsapp size={25} />
+            <FaInstagram size={25} />
+          </div>
       </nav>
     </header>
   );
