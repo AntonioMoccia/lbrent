@@ -28,10 +28,10 @@ function UploadFile(props: UploadFileProps) {
   
   return (
     <>
-      <div className=" cursor-pointer max-h-60 max-w-60 border-2 rounded-2xl  border-black min-h-60">
+      <div className=" cursor-pointer max-h-60 lg:w-60 max-w-60 border-2 rounded-2xl  border-black min-h-60">
         <label htmlFor={htmlFor} className=" h-full cursor-pointer">
           <div className="flex flex-col justify-around items-center h-full  ">
-            <div className=" min-h-[70%] w-full flex flex-col justify-center items-center">
+            <div className=" min-h-[10rem] w-full flex flex-col justify-center items-center">
               {GetIcon(value)}
               {value && value.length > 0 ? (
                 <p className=" py-2 px-5 text-xs max-w-full bg-red-100 truncate">
@@ -40,8 +40,8 @@ function UploadFile(props: UploadFileProps) {
               ) : null}
             </div>
 
-            <div className=" border-t-2  w-full border-black  rounded-2xl ">
-              <h1 className=" text-[0.7rem] w-full font-bold px-2 py-5 ">
+            <div className=" border-t-2 h-[5rem] w-full border-black  rounded-2xl ">
+              <h1 className=" text-[0.7rem] h-full w-full flex items-center justify-start font-bold px-2">
                 {props.testo}
               </h1>
             </div>

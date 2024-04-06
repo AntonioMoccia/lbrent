@@ -5,7 +5,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField, UploadFile } from "./Fields";
 
-function DittaIndividualeForm() {
+function SocietaPersoneForm() {
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
 
   const zod: z.ZodObject<any> = z.object({
@@ -26,12 +26,6 @@ function DittaIndividualeForm() {
 
   const watcher = useWatch({ control });
 
-  useEffect(() => {
-    console.log(watcher);
-  }, [watcher]);
-
-
-
   const onSubmit = (e: any) => {
     console.log(e);
   };
@@ -42,11 +36,11 @@ function DittaIndividualeForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-2 h-auto w-full">
             <UploadFile
-              testo="Documento di identità"
-              error={errors.documento_identita?.message as string}
-              value={watcher['documento_identita']}
-              inputProps={register("documento_identita")}
-              htmlFor="documento_identita"
+              testo="Documento di identità firmatario"
+              error={errors.documento_identita_firmatario?.message as string}
+              value={watcher['documento_identita_firmatario']}
+              inputProps={register("documento_identita_firmatario")}
+              htmlFor="documento_identita_firmatario"
             />
             <UploadFile
               testo="Tesserino codice fiscale"
@@ -63,11 +57,11 @@ function DittaIndividualeForm() {
               htmlFor="visura_camerale"
             />
             <UploadFile
-              testo="Ultimo modello unico depositato"
-              error={errors.ultimo_modello_unico?.message as string}
-              value={watcher['ultimo_modello_unico']}
-              inputProps={register("ultimo_modello_unico")}
-              htmlFor="ultimo_modello_unico"
+              testo="Ultimo modello unico depositato società"
+              error={errors.ultimo_modello_unico_societa?.message as string}
+              value={watcher['ultimo_modello_unico_societa']}
+              inputProps={register("ultimo_modello_unico_societa")}
+              htmlFor="ultimo_modello_unico_societa"
             />
             <UploadFile
               testo="Quadro IQ"
@@ -75,6 +69,13 @@ function DittaIndividualeForm() {
               value={watcher['quadro_iq']}
               inputProps={register("quadro_iq")}
               htmlFor="quadro_iq"
+            />
+            <UploadFile
+              testo="Ultimo modello unico socio accomodatario"
+              error={errors.ultimo_modello_unico_socio_accomodatario?.message as string}
+              value={watcher['ultimo_modello_unico_socio_accomodatario']}
+              inputProps={register("ultimo_modello_unico_socio_accomodatario")}
+              htmlFor="ultimo_modello_unico_socio_accomodatario"
             />
           </div>
 
@@ -88,7 +89,7 @@ function DittaIndividualeForm() {
               value={watcher['nome']}
               inputProps={register("nome")}
             />
-              <TextField
+            <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
@@ -103,7 +104,12 @@ function DittaIndividualeForm() {
               value={watcher['iban']}
               inputProps={register("iban")}
             />
-
+           {/*  <TextField
+              type="text"
+              error={errors.cognome?.message as string}
+              value={cognome}
+              inputProps={register("cognome")}
+            /> */}
           </div>
           <div className=" mt-10 w-full flex justify-center items-center">
             <input
@@ -117,4 +123,4 @@ function DittaIndividualeForm() {
   );
 }
 
-export default DittaIndividualeForm;
+export default SocietaPersoneForm;

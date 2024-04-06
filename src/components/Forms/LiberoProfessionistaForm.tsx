@@ -5,7 +5,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField, UploadFile } from "./Fields";
 
-function DittaIndividualeForm() {
+function LiberoProfessionistaForm() {
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
 
   const zod: z.ZodObject<any> = z.object({
@@ -25,12 +25,6 @@ function DittaIndividualeForm() {
   });
 
   const watcher = useWatch({ control });
-
-  useEffect(() => {
-    console.log(watcher);
-  }, [watcher]);
-
-
 
   const onSubmit = (e: any) => {
     console.log(e);
@@ -70,11 +64,11 @@ function DittaIndividualeForm() {
               htmlFor="ultimo_modello_unico"
             />
             <UploadFile
-              testo="Quadro IQ"
-              error={errors.quadro_iq?.message as string}
-              value={watcher['quadro_iq']}
-              inputProps={register("quadro_iq")}
-              htmlFor="quadro_iq"
+              testo="Tesserino iscrizione albo"
+              error={errors.iscrizione_albo?.message as string}
+              value={watcher['iscrizione_albo']}
+              inputProps={register("iscrizione_albo")}
+              htmlFor="iscrizione_albo"
             />
           </div>
 
@@ -88,7 +82,7 @@ function DittaIndividualeForm() {
               value={watcher['nome']}
               inputProps={register("nome")}
             />
-              <TextField
+            <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
@@ -103,7 +97,12 @@ function DittaIndividualeForm() {
               value={watcher['iban']}
               inputProps={register("iban")}
             />
-
+           {/*  <TextField
+              type="text"
+              error={errors.cognome?.message as string}
+              value={cognome}
+              inputProps={register("cognome")}
+            /> */}
           </div>
           <div className=" mt-10 w-full flex justify-center items-center">
             <input
@@ -117,4 +116,4 @@ function DittaIndividualeForm() {
   );
 }
 
-export default DittaIndividualeForm;
+export default LiberoProfessionistaForm;

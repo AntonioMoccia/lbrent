@@ -5,7 +5,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField, UploadFile } from "./Fields";
 
-function DittaIndividualeForm() {
+function PersoneFisicheDipendentiForm() {
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
 
   const zod: z.ZodObject<any> = z.object({
@@ -56,25 +56,18 @@ function DittaIndividualeForm() {
               htmlFor="tesserino_codice_fiscale"
             />
             <UploadFile
-              testo="Visura camerale (ultimi 6 mesi)"
-              error={errors.visura_camerale?.message as string}
-              value={watcher['visura_camerale']}
-              inputProps={register("visura_camerale")}
-              htmlFor="visura_camerale"
+              testo="Ultimo modello CUD"
+              error={errors.modello_cud?.message as string}
+              value={watcher['modello_cud']}
+              inputProps={register("modello_cud")}
+              htmlFor="modello_cud"
             />
             <UploadFile
-              testo="Ultimo modello unico depositato"
-              error={errors.ultimo_modello_unico?.message as string}
-              value={watcher['ultimo_modello_unico']}
-              inputProps={register("ultimo_modello_unico")}
-              htmlFor="ultimo_modello_unico"
-            />
-            <UploadFile
-              testo="Quadro IQ"
-              error={errors.quadro_iq?.message as string}
-              value={watcher['quadro_iq']}
-              inputProps={register("quadro_iq")}
-              htmlFor="quadro_iq"
+              testo="Ultime due buste paga"
+              error={errors.ultimo_due_buste_paga?.message as string}
+              value={watcher['ultimo_due_buste_paga']}
+              inputProps={register("ultimo_due_buste_paga")}
+              htmlFor="ultimo_due_buste_paga"
             />
           </div>
 
@@ -117,4 +110,4 @@ function DittaIndividualeForm() {
   );
 }
 
-export default DittaIndividualeForm;
+export default PersoneFisicheDipendentiForm;

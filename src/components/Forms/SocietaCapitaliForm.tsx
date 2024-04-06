@@ -5,7 +5,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField, UploadFile } from "./Fields";
 
-function DittaIndividualeForm() {
+function SocietaCapitaliForm() {
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
 
   const zod: z.ZodObject<any> = z.object({
@@ -42,18 +42,18 @@ function DittaIndividualeForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-2 h-auto w-full">
             <UploadFile
-              testo="Documento di identità"
-              error={errors.documento_identita?.message as string}
-              value={watcher['documento_identita']}
-              inputProps={register("documento_identita")}
-              htmlFor="documento_identita"
+              testo="Documento di identità firmatario"
+              error={errors.documento_identita_firmatario?.message as string}
+              value={watcher['documento_identita_firmatario']}
+              inputProps={register("documento_identita_firmatario")}
+              htmlFor="documento_identita_firmatario"
             />
             <UploadFile
-              testo="Tesserino codice fiscale"
-              error={errors.tesserino_codice_fiscale?.message as string}
-              value={watcher['tesserino_codice_fiscale']}
-              inputProps={register("tesserino_codice_fiscale")}
-              htmlFor="tesserino_codice_fiscale"
+              testo="Tesserino codice fiscale firmatario"
+              error={errors.tesserino_codice_fiscale_firmatario?.message as string}
+              value={watcher['tesserino_codice_fiscale_firmatario']}
+              inputProps={register("tesserino_codice_fiscale_firmatario")}
+              htmlFor="tesserino_codice_fiscale_firmatario"
             />
             <UploadFile
               testo="Visura camerale (ultimi 6 mesi)"
@@ -63,18 +63,11 @@ function DittaIndividualeForm() {
               htmlFor="visura_camerale"
             />
             <UploadFile
-              testo="Ultimo modello unico depositato"
+              testo="Ultimo bilacio depositato + nota integrativa + ricevuta di presentazione"
               error={errors.ultimo_modello_unico?.message as string}
               value={watcher['ultimo_modello_unico']}
               inputProps={register("ultimo_modello_unico")}
               htmlFor="ultimo_modello_unico"
-            />
-            <UploadFile
-              testo="Quadro IQ"
-              error={errors.quadro_iq?.message as string}
-              value={watcher['quadro_iq']}
-              inputProps={register("quadro_iq")}
-              htmlFor="quadro_iq"
             />
           </div>
 
@@ -117,4 +110,4 @@ function DittaIndividualeForm() {
   );
 }
 
-export default DittaIndividualeForm;
+export default SocietaCapitaliForm;

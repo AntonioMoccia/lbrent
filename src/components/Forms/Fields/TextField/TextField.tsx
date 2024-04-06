@@ -5,6 +5,7 @@ interface TextFieldProps {
   inputProps: any;
   value: string;
   error?: string;
+  placeholder:string
 }
 
 function TextField(props: TextFieldProps) {
@@ -17,7 +18,7 @@ function TextField(props: TextFieldProps) {
           {...inputProps}
           type={type}
           className="pl-5 py-1 pr-4 w-[90%] border-[0.2rem] rounded-xl border-black placeholder-black"
-          placeholder="Default Label"
+          placeholder={props.placeholder}
         />
         <span>{error}</span>
       </div>

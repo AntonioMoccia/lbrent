@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Logo, MENU_LINKS } from "../constants";
-import { IoMenu,IoClose } from "react-icons/io5";
+import { IoMenu, IoClose } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
@@ -33,7 +33,7 @@ function Navbar() {
             onClick={handleButtonClick}
             className=" lg:hidden flex  justify-center items-center w-10 h-10 rounded-lg bg-black text-white"
           >
-           {open ? <IoClose /> : <IoMenu />}
+            {open ? <IoClose /> : <IoMenu />}
           </div>
         </div>
         <div
@@ -50,7 +50,7 @@ function Navbar() {
                   className={clsx(
                     "hover:bg-black px-3 rounded-xl text-xs font-medium hover:text-white py-3",
                     pathname == item.href
-                      ? "bg-black px-[0.5rem] rounded-xl text-white py-3"
+                      ? "bg-black px-3 rounded-xl text-white py-3"
                       : ""
                   )}
                   href={item.href}
@@ -61,10 +61,10 @@ function Navbar() {
             ))}
           </ul>
         </div>
-          <div className=" md:flex md:gap-2 hidden ">
-            <FaWhatsapp size={25} />
-            <FaInstagram size={25} />
-          </div>
+        <div className=" md:flex md:gap-2 hidden ">
+          <FaWhatsapp className=" cursor-pointer" size={25} />
+          <FaInstagram className=" cursor-pointer" size={25} />
+        </div>
       </nav>
     </header>
   );

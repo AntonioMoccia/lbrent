@@ -1,4 +1,10 @@
 import DittaIndividualeForm from "@/components/Forms/DittaIndividualeForm";
+import LiberoProfessionistaForm from "@/components/Forms/LiberoProfessionistaForm";
+import PensionatoForm from "@/components/Forms/PensionatoForm";
+import PersoneFisicheDipendentiForm from "@/components/Forms/PersoneFisicheDipendentiForm";
+import SocietaCapitaliForm from "@/components/Forms/SocietaCapitaliForm";
+import SocietaCooperativaForm from "@/components/Forms/SocietaCooperativaForm";
+import SocietaPersoneForm from "@/components/Forms/SocietaPersoneForm";
 import Hero from "@/components/Hero";
 import {
   Accordion,
@@ -14,12 +20,29 @@ const AccordionItems = [
   },
   {
     label: "Libero professionista",
-    content: <DittaIndividualeForm />,
+    content: <LiberoProfessionistaForm />,
   },
   {
     label: "Società persone",
-    content: <DittaIndividualeForm />,
+    content: <SocietaPersoneForm />,
   },
+  {
+    label: "Società capitali",
+    content: <SocietaCapitaliForm />,
+  },
+  {
+    label: "Società cooperativa",
+    content: <SocietaCooperativaForm/>,
+  },
+  {
+    label: "Persone fisiche dipendenti",
+    content: <PersoneFisicheDipendentiForm />,
+  },
+  {
+    label: "Pensionato",
+    content: <PensionatoForm />,
+  },
+
 ];
 
 function LungoTermine() {

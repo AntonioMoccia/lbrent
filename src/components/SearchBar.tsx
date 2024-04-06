@@ -6,7 +6,7 @@ function SearchBar({onSearchChange}:{onSearchChange:(value:string)=>void}) {
     <div className="relative">
     <input
       type="text"
-      className="pl-10 pr-4 py-1 border-[0.2rem] rounded-xl border-black placeholder-black"
+      className="pl-10 w-full max-w-[85rem] pr-4 py-1 border-[0.2rem] rounded-xl border-black placeholder-black"
       placeholder="Ricerca"
       onChange={(e)=>{
         onSearchChange(e.currentTarget.value)
