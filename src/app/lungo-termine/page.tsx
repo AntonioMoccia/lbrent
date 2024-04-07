@@ -6,11 +6,12 @@ import SocietaCapitaliForm from "@/components/Forms/SocietaCapitaliForm";
 import SocietaCooperativaForm from "@/components/Forms/SocietaCooperativaForm";
 import SocietaPersoneForm from "@/components/Forms/SocietaPersoneForm";
 import Hero from "@/components/Hero";
+
 import {
   Accordion,
   Item,
 } from "@/components/accordion";
-import { HeroImage } from "@/constants";
+import { CarImage, HeroImage } from "@/constants";
 import React from "react";
 
 const AccordionItems = [
@@ -49,7 +50,7 @@ function LungoTermine() {
   return (
     <div>
       <Hero
-        imageSrc={HeroImage}
+        imageSrc={CarImage}
         fullScreen={false}
         h1={
           <>

@@ -4,15 +4,20 @@ import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField, UploadFile } from "./Fields";
-
+import axios from "axios";
 function DittaIndividualeForm() {
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
 
-  const zod: z.ZodObject<any> = z.object({
-    identity_front: z.any().refine((file) => {
-      return ACCEPTED_FILE_TYPE.includes(file[0].type);
-    }, "il file deve essere pdf"),
-  });
+  const zod = z
+    .object({
+      documento_identita: z.any().refine((file) => {
+        return ACCEPTED_FILE_TYPE.includes(file[0].type);
+      }, "il file deve essere pdf"),
+    })
+    .refine((fields) => {
+      console.log(fields.documento_identita[0]?.name);
+      return true;
+    });
   const {
     register,
     handleSubmit,
@@ -30,49 +35,63 @@ function DittaIndividualeForm() {
     console.log(watcher);
   }, [watcher]);
 
-
-
   const onSubmit = (e: any) => {
-    console.log(e);
+    const formData = new FormData();
+
+    Object.keys(e).forEach((item: any) => {
+      if (e[item] instanceof FileList) {
+        formData.append(item, e[item][0]);
+      } else {
+        formData.append(item, e[item]);
+      }
+    });
+
+    axios.post("/lungo-termine/api/ditta_individuale", formData).then((res) => {
+      //  console.log(res.status);
+    });
   };
 
   return (
     <div className=" w-full flex justify-center items-center">
       <div className=" max-w-screen-md">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-2 h-auto w-full">
             <UploadFile
               testo="Documento di identità"
               error={errors.documento_identita?.message as string}
-              value={watcher['documento_identita']}
-              inputProps={register("documento_identita")}
+              value={watcher["documento_identita"]}
+              inputProps={register("documento_identita", { required: 'Inserire un documento d`identita', validate:(a,b)=>{
+                console.log(a,b);
+                
+                return true
+              } })}
               htmlFor="documento_identita"
             />
             <UploadFile
               testo="Tesserino codice fiscale"
               error={errors.tesserino_codice_fiscale?.message as string}
-              value={watcher['tesserino_codice_fiscale']}
+              value={watcher["tesserino_codice_fiscale"]}
               inputProps={register("tesserino_codice_fiscale")}
               htmlFor="tesserino_codice_fiscale"
             />
             <UploadFile
               testo="Visura camerale (ultimi 6 mesi)"
               error={errors.visura_camerale?.message as string}
-              value={watcher['visura_camerale']}
+              value={watcher["visura_camerale"]}
               inputProps={register("visura_camerale")}
               htmlFor="visura_camerale"
             />
             <UploadFile
               testo="Ultimo modello unico depositato"
               error={errors.ultimo_modello_unico?.message as string}
-              value={watcher['ultimo_modello_unico']}
+              value={watcher["ultimo_modello_unico"]}
               inputProps={register("ultimo_modello_unico")}
               htmlFor="ultimo_modello_unico"
             />
             <UploadFile
               testo="Quadro IQ"
               error={errors.quadro_iq?.message as string}
-              value={watcher['quadro_iq']}
+              value={watcher["quadro_iq"]}
               inputProps={register("quadro_iq")}
               htmlFor="quadro_iq"
             />
@@ -85,14 +104,14 @@ function DittaIndividualeForm() {
               type="text"
               placeholder="Nome"
               error={errors.nome?.message as string}
-              value={watcher['nome']}
+              value={watcher["nome"]}
               inputProps={register("nome")}
             />
-              <TextField
+            <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
-              value={watcher['cognome']}
+              value={watcher["cognome"]}
               inputProps={register("cognome")}
             />
 
@@ -100,10 +119,9 @@ function DittaIndividualeForm() {
               type="text"
               placeholder="Iban"
               error={errors.iban?.message as string}
-              value={watcher['iban']}
+              value={watcher["iban"]}
               inputProps={register("iban")}
             />
-
           </div>
           <div className=" mt-10 w-full flex justify-center items-center">
             <input

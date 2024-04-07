@@ -4,6 +4,7 @@ import SlideImage1 from '../assets/slide-1.png'
 import SlideImage2 from '../assets/slide-2.png'
 import SlideImage3 from '../assets/slide-3.png'
 import CardImage from '../assets/cardImage.png'
+import CarImage from '../assets/car.png'
 const MENU_LINKS = [
     {
         label: 'Home',
@@ -134,5 +135,6 @@ export {
     HeroImage,
     SLIDER,
     FOOTER_MENU, 
-    Cards
+    Cards,
+    CarImage
 }

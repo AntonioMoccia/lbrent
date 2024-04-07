@@ -15,7 +15,7 @@ function Hero({ imageSrc, h1, p, fullScreen = true }: HeroProps) {
     <section
       className={clsx(
         ` 
-            bg-black justify-start flex flex-col items-center
+            bg-black justify-start flex flex-col items-center overflow-hidden lg:pt-10
             rounded-t-3xl text-white`,
             fullScreen ? `h-[calc(100vh-5rem)]` : `h-1/2`
       )}
