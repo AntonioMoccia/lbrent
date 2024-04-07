@@ -22,7 +22,7 @@ function ChiSiamo() {
           <span className=' text-xs '>Auto a disposizione</span>
         </div>
 
-        <div className='h-full w-[1px] bg-white' />{/**DIVIDER */}
+        <div className='h-full w-[2px] bg-white' />{/**DIVIDER */}
         <div className=' text-2xl items-center flex flex-col'>
           +300
           <span className=' text-xs '>Auto noleggiate</span>
