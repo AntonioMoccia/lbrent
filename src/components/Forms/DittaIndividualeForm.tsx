@@ -1,40 +1,56 @@
 "use client";
-import React, { useEffect } from "react";
-import { useForm, useFieldArray, useWatch } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
+import { useForm, useWatch } from "react-hook-form";
 import { TextField, UploadFile } from "./Fields";
 import axios from "axios";
+import { useToast } from "../toast/use-toast";
+
+import { FaCheckCircle } from "react-icons/fa";
+
 function DittaIndividualeForm() {
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
-
-  const zod = z
-    .object({
-      documento_identita: z.any().refine((file) => {
-        return ACCEPTED_FILE_TYPE.includes(file[0].type);
-      }, "il file deve essere pdf"),
-    })
-    .refine((fields) => {
-      console.log(fields.documento_identita[0]?.name);
-      return true;
-    });
+  const { toast } = useToast();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
+    trigger,
     control,
+    getValues,
   } = useForm({
-    resolver: zodResolver(zod),
+    mode: "all",
   });
 
   const watcher = useWatch({ control });
 
-  useEffect(() => {
-    console.log(watcher);
-  }, [watcher]);
+  const UploadValidator = (targetValue: FileList, fields: any) => {
+    if (ACCEPTED_FILE_TYPE.includes(targetValue[0].type)) {
+      const files = Object.values(fields).filter(
+        (key: any) =>
+          key instanceof FileList && key[0]?.name == targetValue[0]?.name
+      );
+      if (files.length > 1) {
+        return "Hai caricato due volte lo stesso file";
+      } else {
+      }
+    } else {
+      return "Caricare un file pdf";
+    }
 
+    return true;
+  };
+  const onChangeFileUpload = (e: any) => {
+    const formValues = getValues();
+    const targetName = e.currentTarget.name;
+    const triggers = Object.keys(formValues).filter(
+      (key) =>
+        formValues[key] instanceof FileList &&
+        key !== targetName &&
+        formValues[key].length > 0
+    );
+    trigger([...triggers]);
+  };
   const onSubmit = (e: any) => {
     const formData = new FormData();
 
@@ -47,7 +63,19 @@ function DittaIndividualeForm() {
     });
 
     axios.post("/lungo-termine/api/ditta_individuale", formData).then((res) => {
-      //  console.log(res.status);
+      if (res.status == 200) {
+        toast({
+          description: (
+            <div className=" flex items-center gap-2">
+              <FaCheckCircle className=" text-green-500" size={30} /> Richiesta
+              inoltrata, verrai ricontattato al più presto!
+            </div>
+          ),
+        });
+        reset();
+      } else {
+        alert("error");
+      }
     });
   };
 
@@ -60,39 +88,55 @@ function DittaIndividualeForm() {
               testo="Documento di identità"
               error={errors.documento_identita?.message as string}
               value={watcher["documento_identita"]}
-              inputProps={register("documento_identita", { required: 'Inserire un documento d`identita', validate:(a,b)=>{
-                console.log(a,b);
-                
-                return true
-              } })}
+              inputProps={register("documento_identita", {
+                required: "Inserire un documento d`identita",
+                validate: UploadValidator,
+                onChange: onChangeFileUpload,
+              })}
               htmlFor="documento_identita"
             />
             <UploadFile
               testo="Tesserino codice fiscale"
               error={errors.tesserino_codice_fiscale?.message as string}
               value={watcher["tesserino_codice_fiscale"]}
-              inputProps={register("tesserino_codice_fiscale")}
+              inputProps={register("tesserino_codice_fiscale", {
+                required: "Inserire tesserino codice fiscale",
+                validate: UploadValidator,
+                onChange: onChangeFileUpload,
+              })}
               htmlFor="tesserino_codice_fiscale"
             />
             <UploadFile
               testo="Visura camerale (ultimi 6 mesi)"
               error={errors.visura_camerale?.message as string}
               value={watcher["visura_camerale"]}
-              inputProps={register("visura_camerale")}
+              inputProps={register("visura_camerale", {
+                required: "Inserire visura camerale",
+                validate: UploadValidator,
+                onChange: onChangeFileUpload,
+              })}
               htmlFor="visura_camerale"
             />
             <UploadFile
               testo="Ultimo modello unico depositato"
               error={errors.ultimo_modello_unico?.message as string}
               value={watcher["ultimo_modello_unico"]}
-              inputProps={register("ultimo_modello_unico")}
+              inputProps={register("ultimo_modello_unico", {
+                required: "Inserire ultimo modello unico depositato",
+                validate: UploadValidator,
+                onChange: onChangeFileUpload,
+              })}
               htmlFor="ultimo_modello_unico"
             />
             <UploadFile
               testo="Quadro IQ"
               error={errors.quadro_iq?.message as string}
               value={watcher["quadro_iq"]}
-              inputProps={register("quadro_iq")}
+              inputProps={register("quadro_iq", {
+                required: "Inserire quadro IQ",
+                validate: UploadValidator,
+                onChange: onChangeFileUpload,
+              })}
               htmlFor="quadro_iq"
             />
           </div>
@@ -125,6 +169,7 @@ function DittaIndividualeForm() {
           </div>
           <div className=" mt-10 w-full flex justify-center items-center">
             <input
+              disabled={false}
               type="submit"
               className=" bg-black px-20 py-3 rounded-xl text-white"
             />

@@ -17,7 +17,7 @@ function UploadFile(props: UploadFileProps) {
     return (
       <>
         {value?.length > 0 ? (
-          <FaCheckCircle size={50} className="text-black" />
+          <FaCheckCircle size={50} className="text-green-500" />
         ) : (
           // eslint-disable-next-line react/jsx-no-undef
           <FaCircleArrowUp size={50} className="text-black" />
@@ -25,7 +25,7 @@ function UploadFile(props: UploadFileProps) {
       </>
     );
   };
-  
+
   return (
     <>
       <div className=" cursor-pointer max-h-60 lg:w-60 max-w-60 border-2 rounded-2xl  border-black min-h-60">
@@ -34,10 +34,15 @@ function UploadFile(props: UploadFileProps) {
             <div className=" min-h-[10rem] w-full flex flex-col justify-center items-center">
               {GetIcon(value)}
               {value && value.length > 0 ? (
-                <p className=" py-2 px-5 text-xs max-w-full bg-red-100 truncate">
+                <p className=" py-2 px-5 text-xs max-w-full truncate">
                   {value[0].name}
                 </p>
               ) : null}
+              <p className=" py-0 px-5 text-xs max-w-full">
+                <span className=" text-red-600 text-sm">
+                  {error && `* ${error}`}
+                </span>
+              </p>
             </div>
 
             <div className=" border-t-2 h-[5rem] w-full border-black  rounded-2xl ">
@@ -47,9 +52,15 @@ function UploadFile(props: UploadFileProps) {
             </div>
           </div>
         </label>
-        <span>{error}</span>
+        {/*  <span className=" text-red-600 text-sm">{error && `* ${error}`}</span> */}
       </div>
-      <input {...inputProps} id={htmlFor} type={"file"} className=" hidden " />
+      <input
+        {...inputProps}
+        accept="application/pdf"
+        id={htmlFor}
+        type={"file"}
+        className=" hidden "
+      />
     </>
   );
 }

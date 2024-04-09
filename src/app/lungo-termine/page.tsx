@@ -11,6 +11,8 @@ import {
   Accordion,
   Item,
 } from "@/components/accordion";
+
+import { Toaster } from "@/components/toast/toaster";
 import { CarImage, HeroImage } from "@/constants";
 import React from "react";
 
@@ -84,6 +86,7 @@ function LungoTermine() {
           </Accordion>
         </div>
       </section>
+      <Toaster />
     </div>
   );
 }

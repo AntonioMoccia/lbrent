@@ -59,7 +59,7 @@ export async function POST(request: Request) {
     });
 
     return Response.json(data); */
-    return Response.json({ message: "ok" });
+    return new Response('',{status:200})
   } catch (error) {
     return Response.json({ error });
   }
