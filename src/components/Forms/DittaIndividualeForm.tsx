@@ -1,13 +1,17 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { TextField, UploadFile } from "./Fields";
 import axios from "axios";
 import { useToast } from "../toast/use-toast";
 
 import { FaCheckCircle } from "react-icons/fa";
+import { LuLoader2 } from "react-icons/lu";
+
 
 function DittaIndividualeForm() {
+  const [loading, setLoading] = useState(false);
+
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
   const { toast } = useToast();
   const {
@@ -19,12 +23,15 @@ function DittaIndividualeForm() {
     control,
     getValues,
   } = useForm({
-    mode: "all",
+    mode: "onChange",
   });
 
   const watcher = useWatch({ control });
+  const MAX_FILE_SIZE_MB = 5; // Imposta la dimensione massima del file consentita in MB
 
   const UploadValidator = (targetValue: FileList, fields: any) => {
+    const fileSizeInMB = targetValue[0].size / (1024 * 1024);
+
     if (ACCEPTED_FILE_TYPE.includes(targetValue[0].type)) {
       const files = Object.values(fields).filter(
         (key: any) =>
@@ -33,12 +40,15 @@ function DittaIndividualeForm() {
       if (files.length > 1) {
         return "Hai caricato due volte lo stesso file";
       } else {
+        if (fileSizeInMB > MAX_FILE_SIZE_MB) {
+          return "Caricare un file max 5MB";
+        } else {
+          return true;
+        }
       }
     } else {
       return "Caricare un file pdf";
     }
-
-    return true;
   };
   const onChangeFileUpload = (e: any) => {
     const formValues = getValues();
@@ -61,7 +71,7 @@ function DittaIndividualeForm() {
         formData.append(item, e[item]);
       }
     });
-
+    setLoading(true);
     axios.post("/lungo-termine/api/ditta_individuale", formData).then((res) => {
       if (res.status == 200) {
         toast({
@@ -72,6 +82,7 @@ function DittaIndividualeForm() {
             </div>
           ),
         });
+        setLoading(false);
         reset();
       } else {
         alert("error");
@@ -167,13 +178,25 @@ function DittaIndividualeForm() {
               inputProps={register("iban")}
             />
           </div>
-          <div className=" mt-10 w-full flex justify-center items-center">
-            <input
-              disabled={false}
-              type="submit"
-              className=" bg-black px-20 py-3 rounded-xl text-white"
-            />
-          </div>
+          <label
+            htmlFor="submitButton"
+            className="  mt-10 w-full flex justify-center items-center"
+          >
+            <div className="bg-black px-20 py-3 rounded-xl flex items-center gap-3 text-white cursor-pointer">
+              {loading && (
+                <span className=" text-lg animate-spin duration-[100s]">
+                  <LuLoader2 />
+                </span>
+              )}
+              Invia
+            </div>
+          </label>
+          <input
+            id="submitButton"
+            disabled={false}
+            type="submit"
+            className=" hidden"
+          />
         </form>
       </div>
     </div>

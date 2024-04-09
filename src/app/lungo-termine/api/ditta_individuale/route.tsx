@@ -27,13 +27,19 @@ export async function POST(request: Request) {
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
 
+  console.log(documento_identita,
+    tesserino_codice_fiscale,
+    visura_camerale,
+    ultimo_modello_unico,
+    quadro_iq);
+  
 
   try {
-  /*   const data = await resend.emails.send({
+    const data = await resend.emails.send({
       from: "Ditta individuale <onboarding@resend.dev>",
       to: ["moccia.ant@gmail.com"],
       subject: "Hello world",
-      text: "Prova",
+      react: <EmailTemplate tipologia={'ditta individuale'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
       attachments: [
         {
           filename: documento_identita.fileName,
@@ -57,10 +63,13 @@ export async function POST(request: Request) {
         },
       ],
     });
-
-    return Response.json(data); */
-    return new Response('',{status:200})
+    console.log(data);
+    
+    return Response.json(data);
+    
   } catch (error) {
+    console.log(error);
+    
     return Response.json({ error });
   }
 }
