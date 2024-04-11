@@ -8,7 +8,6 @@ import { useToast } from "../toast/use-toast";
 import { FaCheckCircle } from "react-icons/fa";
 import { LuLoader2 } from "react-icons/lu";
 
-
 function DittaIndividualeForm() {
   const [loading, setLoading] = useState(false);
 
@@ -100,7 +99,7 @@ function DittaIndividualeForm() {
               error={errors.documento_identita?.message as string}
               value={watcher["documento_identita"]}
               inputProps={register("documento_identita", {
-                required: "Inserire un documento d`identita",
+                required: "Campo obbligatorio",
                 validate: UploadValidator,
                 onChange: onChangeFileUpload,
               })}
@@ -111,7 +110,7 @@ function DittaIndividualeForm() {
               error={errors.tesserino_codice_fiscale?.message as string}
               value={watcher["tesserino_codice_fiscale"]}
               inputProps={register("tesserino_codice_fiscale", {
-                required: "Inserire tesserino codice fiscale",
+                required: "Campo obbligatorio",
                 validate: UploadValidator,
                 onChange: onChangeFileUpload,
               })}
@@ -122,7 +121,7 @@ function DittaIndividualeForm() {
               error={errors.visura_camerale?.message as string}
               value={watcher["visura_camerale"]}
               inputProps={register("visura_camerale", {
-                required: "Inserire visura camerale",
+                required: "Campo obbligatorio",
                 validate: UploadValidator,
                 onChange: onChangeFileUpload,
               })}
@@ -133,7 +132,7 @@ function DittaIndividualeForm() {
               error={errors.ultimo_modello_unico?.message as string}
               value={watcher["ultimo_modello_unico"]}
               inputProps={register("ultimo_modello_unico", {
-                required: "Inserire ultimo modello unico depositato",
+                required: "Campo obbligatorio",
                 validate: UploadValidator,
                 onChange: onChangeFileUpload,
               })}
@@ -144,7 +143,7 @@ function DittaIndividualeForm() {
               error={errors.quadro_iq?.message as string}
               value={watcher["quadro_iq"]}
               inputProps={register("quadro_iq", {
-                required: "Inserire quadro IQ",
+                required: "Campo obbligatorio",
                 validate: UploadValidator,
                 onChange: onChangeFileUpload,
               })}

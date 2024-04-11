@@ -1,32 +1,52 @@
 import { EmailTemplate } from "@/components/EmailTemplate";
 import { Resend } from "resend";
-import fs from "fs";
-import { NextRequest, NextResponse } from "next/server";
+
+import { toBuffer } from "@/lib/toBuffer";
 const resend = new Resend("re_M7y7FAJX_PwAdwnATbJLKhHNFUJUN4S7M");
 //documento_identita
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const documento_identita = formData.get("documento_identita") as File;
-  if (!documento_identita) {
-    return NextResponse.json(
-      { error: "File blob is required." },
-      { status: 400 }
-    );
-  }
+  const documento_identita = await toBuffer(
+    formData.get("documento_identita") as File
+  );
+  const tesserino_codice_fiscale = await toBuffer(
+    formData.get("tesserino_codice_fiscale") as File
+  );
+  const cedolino_pensione_730_cud = await toBuffer(
+    formData.get("cedolino_pensione_730_cud") as File
+  );
 
-  const contentFileArrayBuffer = await documento_identita.arrayBuffer();
+
+  const nome = formData.get("nome");
+  const cognome = formData.get("cognome");
+  const iban = formData.get("iban");
 
   try {
     const data = await resend.emails.send({
-      from: "Ditta individuale <onboarding@resend.dev>",
+      from: "Pensionato <onboarding@resend.dev>",
       to: ["moccia.ant@gmail.com"],
-      subject: "Hello world",
-      text: "Prova",
+      subject: "Richiesta lungo termine - Pensionato",
+      react: (
+        <EmailTemplate
+          tipologia={"Pensionato"}
+          nome={nome as string}
+          cognome={cognome as string}
+          iban={iban as string}
+        />
+      ),
       attachments: [
         {
-          filename: 'file.name',
-          content: Buffer.from(contentFileArrayBuffer),
+          filename: documento_identita.fileName,
+          content: documento_identita.bufferFile,
         },
+        {
+          filename: tesserino_codice_fiscale.fileName,
+          content: tesserino_codice_fiscale.bufferFile,
+        },
+        {
+          filename: cedolino_pensione_730_cud.fileName,
+          content: cedolino_pensione_730_cud.bufferFile,
+        }
       ],
     });
 

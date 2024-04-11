@@ -1,39 +1,63 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField, UploadFile } from "./Fields";
+import { FaCheckCircle } from "react-icons/fa";
+import axios from "axios";
+import { useToast } from "../toast/use-toast";
+import { onChangeFileUpload } from "@/lib/onChageFileUpload";
+import { UploadValidator } from "@/lib/uploadValidator";
+import { LuLoader2 } from "react-icons/lu";
 
 function PersoneFisicheDipendentiForm() {
-  const ACCEPTED_FILE_TYPE = ["application/pdf"];
+  const [loading, setLoading] = useState(false);
 
-  const zod: z.ZodObject<any> = z.object({
-    identity_front: z.any().refine((file) => {
-      return ACCEPTED_FILE_TYPE.includes(file[0].type);
-    }, "il file deve essere pdf"),
-  });
+  const { toast } = useToast();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
+    trigger,
     control,
+    getValues,
   } = useForm({
-    resolver: zodResolver(zod),
+    mode: "onChange",
   });
 
   const watcher = useWatch({ control });
 
-  useEffect(() => {
-    console.log(watcher);
-  }, [watcher]);
-
-
-
   const onSubmit = (e: any) => {
-    console.log(e);
+    const formData = new FormData();
+
+    Object.keys(e).forEach((item: any) => {
+      if (e[item] instanceof FileList) {
+        formData.append(item, e[item][0]);
+      } else {
+        formData.append(item, e[item]);
+      }
+    });
+    setLoading(true);
+    axios
+      .post("/lungo-termine/api/persone_fisiche_dipendenti", formData)
+      .then((res) => {
+        if (res.status == 200) {
+          toast({
+            description: (
+              <div className=" flex items-center gap-2">
+                <FaCheckCircle className=" text-green-500" size={30} />{" "}
+                Richiesta inoltrata, verrai ricontattato al più presto!
+              </div>
+            ),
+          });
+          setLoading(false);
+          reset();
+        } else {
+          alert("error");
+        }
+      });
   };
 
   return (
@@ -44,29 +68,45 @@ function PersoneFisicheDipendentiForm() {
             <UploadFile
               testo="Documento di identità"
               error={errors.documento_identita?.message as string}
-              value={watcher['documento_identita']}
-              inputProps={register("documento_identita")}
+              value={watcher["documento_identita"]}
+              inputProps={register("documento_identita", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
               htmlFor="documento_identita"
             />
             <UploadFile
               testo="Tesserino codice fiscale"
               error={errors.tesserino_codice_fiscale?.message as string}
-              value={watcher['tesserino_codice_fiscale']}
-              inputProps={register("tesserino_codice_fiscale")}
+              value={watcher["tesserino_codice_fiscale"]}
+              inputProps={register("tesserino_codice_fiscale", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
               htmlFor="tesserino_codice_fiscale"
             />
             <UploadFile
               testo="Ultimo modello CUD"
               error={errors.modello_cud?.message as string}
-              value={watcher['modello_cud']}
-              inputProps={register("modello_cud")}
+              value={watcher["modello_cud"]}
+              inputProps={register("modello_cud", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
               htmlFor="modello_cud"
             />
             <UploadFile
               testo="Ultime due buste paga"
               error={errors.ultimo_due_buste_paga?.message as string}
-              value={watcher['ultimo_due_buste_paga']}
-              inputProps={register("ultimo_due_buste_paga")}
+              value={watcher["ultimo_due_buste_paga"]}
+              inputProps={register("ultimo_due_buste_paga", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
               htmlFor="ultimo_due_buste_paga"
             />
           </div>
@@ -78,14 +118,14 @@ function PersoneFisicheDipendentiForm() {
               type="text"
               placeholder="Nome"
               error={errors.nome?.message as string}
-              value={watcher['nome']}
+              value={watcher["nome"]}
               inputProps={register("nome")}
             />
-              <TextField
+            <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
-              value={watcher['cognome']}
+              value={watcher["cognome"]}
               inputProps={register("cognome")}
             />
 
@@ -93,17 +133,29 @@ function PersoneFisicheDipendentiForm() {
               type="text"
               placeholder="Iban"
               error={errors.iban?.message as string}
-              value={watcher['iban']}
+              value={watcher["iban"]}
               inputProps={register("iban")}
             />
-
           </div>
-          <div className=" mt-10 w-full flex justify-center items-center">
-            <input
-              type="submit"
-              className=" bg-black px-20 py-3 rounded-xl text-white"
-            />
-          </div>
+          <label
+            htmlFor="submitButton"
+            className="  mt-10 w-full flex justify-center items-center"
+          >
+            <div className="bg-black px-20 py-3 rounded-xl flex items-center gap-3 text-white cursor-pointer">
+              {loading && (
+                <span className=" text-lg animate-spin duration-[100s]">
+                  <LuLoader2 />
+                </span>
+              )}
+              Invia
+            </div>
+          </label>
+          <input
+            id="submitButton"
+            disabled={false}
+            type="submit"
+            className=" hidden"
+          />
         </form>
       </div>
     </div>
