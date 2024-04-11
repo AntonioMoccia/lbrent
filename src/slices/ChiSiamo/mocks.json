@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"chi_siamo_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Commodo id dolor cillum consectetur eiusmod. Nulla non aliqua magna veniam laborum in sint incididunt dolor officia et fugiat deserunt laborum ut."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
