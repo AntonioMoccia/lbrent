@@ -1,0 +1,74 @@
+{
+  "id": "car_list",
+  "type": "SharedSlice",
+  "name": "CarList",
+  "description": "CarList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "titolo": {
+          "type": "Text",
+          "config": {
+            "label": "Titolo",
+            "placeholder": ""
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "neopatentati": {
+          "type": "Boolean",
+          "config": {
+            "label": "neopatentati",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "posti": {
+          "type": "Number",
+          "config": {
+            "label": "posti",
+            "placeholder": ""
+          }
+        },
+        "cambio": {
+          "type": "Select",
+          "config": {
+            "label": "cambio",
+            "placeholder": "",
+            "options": [
+              "Manual",
+              "Automatic"
+            ],
+            "default_value": "Manual"
+          }
+        },
+        "carburante": {
+          "type": "Select",
+          "config": {
+            "label": "carburante",
+            "placeholder": "",
+            "options": [
+              "Benzina",
+              "Diesel"
+            ],
+            "default_value": "Benzina"
+          }
+        }
+      }
+    }
+  ]
+}

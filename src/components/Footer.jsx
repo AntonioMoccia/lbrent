@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Logo, FOOTER_MENU } from '../constants'
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Link } from 'lucide-react';
 
 
 function Footer() {
@@ -20,15 +21,19 @@ function Footer() {
                     </ul>
                 </div>
                 <div className=' flex gap-2'>
-                    <FaInstagram className='text-xl bg-transparent text-black' />
-                    <FaWhatsapp className='text-xl bg-transparent text-black' />
+                    <a target='__blank' href='https://www.instagram.com/lb_rent_/'>
+                        <FaInstagram className='text-xl bg-transparent text-black' />
+                    </a>
+                    <a target='__blank' href='https://www.facebook.com/autonoleggiolbrent/'>
+                        <FaFacebook className='text-xl bg-transparent text-black' />
+                    </a>
                 </div>
             </div>
             <div className='w-full flex justify-center items-center'>
-            <div className=' w-[80%] pl-[10%] h-[1px] bg-black'/>{/**Divider */}
+                <div className=' w-[80%] pl-[10%] h-[1px] bg-black' />{/**Divider */}
             </div>
             <div className=' h-1/2 flex justify-center items-center'>
-            2077 Untitled Ui. All rights reserved
+                2077 Untitled Ui. All rights reserved
             </div>
         </footer>
     )

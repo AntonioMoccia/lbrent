@@ -2,15 +2,17 @@ import Image, { StaticImageData } from "next/image";
 import { HeroImage } from "../constants";
 import clsx from "clsx";
 import React from "react";
+import { ImageField, RichTextField } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
 
 interface HeroProps {
-  imageSrc: StaticImageData;
-  h1: string | React.ReactNode;
+  image: ImageField<never>;
+  h1: RichTextField;
   p: string | React.ReactNode;
   fullScreen: boolean;
 }
 
-function Hero({ imageSrc, h1, p, fullScreen = true }: HeroProps) {
+function Hero({ image, h1, p, fullScreen = true }: HeroProps) {
   return (
     <section
       className={clsx(
@@ -21,14 +23,17 @@ function Hero({ imageSrc, h1, p, fullScreen = true }: HeroProps) {
       )}
     >
       <Image
-        alt="hero"
+        alt={image.alt!}
         className=" w-full max-w-screen-lg  rounded-t-3xl"
-        src={imageSrc ? imageSrc : ""}
+        src={image.url as string}
+        height={image.dimensions?.height}
+        width={image.dimensions?.width}
+
       />
 
-      <h1 className=" text-[#B11000] font-extrabold text-2xl text text-center pt-14 max-w-screen-sm w-full leading-[-1%]">
-        {h1}
-      </h1>
+      <div className=" text-[#B11000] font-extrabold text-2xl text text-center pt-14 max-w-screen-sm w-full leading-[-1%]">
+      <PrismicRichText field={h1} />
+      </div>
       {p !== "" && (
         <p className=" text-center font-medium py-2 tracking-wide">{p}</p>
       )}

@@ -4,6 +4,104 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type BreveTermineDocumentDataSlicesSlice = CarListSlice;
+
+/**
+ * Content for breveTermine documents
+ */
+interface BreveTermineDocumentData {
+  /**
+   * image field in *breveTermine*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: breveTermine.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * titolo field in *breveTermine*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: breveTermine.titolo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titolo: prismic.RichTextField;
+
+  /**
+   * descrizione field in *breveTermine*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: breveTermine.descrizione
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descrizione: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *breveTermine*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: breveTermine.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BreveTermineDocumentDataSlicesSlice> /**
+   * Meta Description field in *breveTermine*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: breveTermine.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *breveTermine*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: breveTermine.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *breveTermine*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: breveTermine.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * breveTermine document from Prismic
+ *
+ * - **API ID**: `breveTermine`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BreveTermineDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<BreveTermineDocumentData>,
+    "breveTermine",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice = GallerySlice | ChiSiamoSlice;
 
 /**
@@ -98,7 +196,206 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = HomeDocument;
+type LungotermineDocumentDataSlicesSlice = never;
+
+/**
+ * Content for lungoTermine documents
+ */
+interface LungotermineDocumentData {
+  /**
+   * image field in *lungoTermine*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lungotermine.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * titolo field in *lungoTermine*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lungotermine.titolo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titolo: prismic.RichTextField;
+
+  /**
+   * descrizione field in *lungoTermine*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lungotermine.descrizione
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descrizione: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *lungoTermine*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lungotermine.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<LungotermineDocumentDataSlicesSlice> /**
+   * Meta Description field in *lungoTermine*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: lungotermine.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *lungoTermine*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: lungotermine.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *lungoTermine*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: lungotermine.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * lungoTermine document from Prismic
+ *
+ * - **API ID**: `lungotermine`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LungotermineDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<LungotermineDocumentData>,
+    "lungotermine",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | BreveTermineDocument
+  | HomeDocument
+  | LungotermineDocument;
+
+/**
+ * Primary content in *CarList → Items*
+ */
+export interface CarListSliceDefaultItem {
+  /**
+   * Titolo field in *CarList → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: car_list.items[].titolo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titolo: prismic.KeyTextField;
+
+  /**
+   * image field in *CarList → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: car_list.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * neopatentati field in *CarList → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: car_list.items[].neopatentati
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  neopatentati: prismic.BooleanField;
+
+  /**
+   * posti field in *CarList → Items*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: car_list.items[].posti
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  posti: prismic.NumberField;
+
+  /**
+   * cambio field in *CarList → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Manual
+   * - **API ID Path**: car_list.items[].cambio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  cambio: prismic.SelectField<"Manual" | "Automatic", "filled">;
+
+  /**
+   * carburante field in *CarList → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Benzina
+   * - **API ID Path**: car_list.items[].carburante
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  carburante: prismic.SelectField<"Benzina" | "Diesel", "filled">;
+}
+
+/**
+ * Default variation for CarList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<CarListSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CarList*
+ */
+type CarListSliceVariation = CarListSliceDefault;
+
+/**
+ * CarList Shared Slice
+ *
+ * - **API ID**: `car_list`
+ * - **Description**: CarList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarListSlice = prismic.SharedSlice<
+  "car_list",
+  CarListSliceVariation
+>;
 
 /**
  * Primary content in *ChiSiamo → Primary*
@@ -200,10 +497,20 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      BreveTermineDocument,
+      BreveTermineDocumentData,
+      BreveTermineDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      LungotermineDocument,
+      LungotermineDocumentData,
+      LungotermineDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CarListSlice,
+      CarListSliceDefaultItem,
+      CarListSliceVariation,
+      CarListSliceDefault,
       ChiSiamoSlice,
       ChiSiamoSliceDefaultPrimary,
       ChiSiamoSliceVariation,

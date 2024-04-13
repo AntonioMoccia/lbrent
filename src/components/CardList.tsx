@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Card, { CardProps } from "./Card";
+import Card from "./Card";
 import usePagination from "@/hooks/usePagination";
 import SearchBar from "./SearchBar";
 import Pagination from "./Pagination";
 import { map, uniqBy } from 'lodash'
-function CardList({ Cards }: { Cards: CardProps[] }) {
-  const [filteredCars, setFilteredCars] = useState(Cards);
+import { Content } from "@prismicio/client";
+function CardList({ Cards }: { Cards: Content.CarListSlice }) {
+  const [filteredCars, setFilteredCars] = useState(Cards.items);
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage, setCarsPerPage] = useState(6);
 
@@ -25,11 +26,11 @@ function CardList({ Cards }: { Cards: CardProps[] }) {
 
   const onSearchChange = (search: string) => {
     if (search == "") {
-      setFilteredCars(Cards);
+      setFilteredCars(Cards.items);
     } else {
-      let tempCars = Cards.filter((car) => {
-        return car.title
-          .toLowerCase()
+      let tempCars = Cards.items.filter((car) => {
+   
+        return car.titolo?.toLowerCase()
           .trim()
           .includes(search.toLowerCase().trim());
       });
@@ -50,12 +51,9 @@ function CardList({ Cards }: { Cards: CardProps[] }) {
    * Ogni field ha una checklist a se stante con rispettivi valori univoci
    */
 
-  const uniq = map(uniqBy(Cards,CheckedFields[0]),(value:any)=>{
+  const uniq = map(uniqBy(Cards.items,CheckedFields[0]),(value:any)=>{
     return value[CheckedFields[0]]
-  })
-  console.log(uniq);
-  
-  
+  }) 
   
 
   const handlePageClick = (event: any) => {
@@ -74,15 +72,15 @@ function CardList({ Cards }: { Cards: CardProps[] }) {
         <SearchBar onSearchChange={onSearchChange} />
       </section>
 
-      <div className=" flex px-1 flex-col justify-start items-center gap-4 bg-black max-h-[calc(100vh-8rem)] min-h-[750px] ">
+      <div className=" flex px-1 py-5 flex-col justify-start items-center gap-4 bg-black max-h-[calc(100vh-8rem)] min-h-[750px] ">
         <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 p-2 h-auto max-w-screen-md">
-          {currentItems.map((item: any, i: number) => (
+          {currentItems.map((item:Content.CarListSliceDefaultItem, i: number) => (
             <Card
               key={i}
-              title={item.title}
+              titolo={item.titolo}
               image={item.image}
-              neopatentato={item.neopatentato}
-              posti={item.posti}
+              neopatentati={item.neopatentati}
+              posti={item.posti as number}
               carburante={item.carburante}
               cambio={item.cambio}
             />

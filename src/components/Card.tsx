@@ -1,35 +1,28 @@
-import { StaticImageData } from "next/image";
+import { Content } from "@prismicio/client";
+
 import Image from "next/image";
 import { LuUser2 } from "react-icons/lu";
-export interface CardProps {
-  title: string;
-  image: StaticImageData;
-  neopatentato: boolean;
-  posti: number;
-  carburante: string;
-  cambio: string;
-}
 
 function Card({
-  title,
+  titolo,
   image,
-  neopatentato,
+  neopatentati,
   posti,
   carburante,
   cambio,
-}: CardProps) {
+}: Content.CarListSliceDefaultItem) {
   return (
     <div className=" bg-black rounded-2xl items-start flex flex-col justify-between py-3 px-2 border-2 max-h-60 max-w-60 border-white min-h-60">
       <div className=" relative top-0 min-h-[3rem]">
-        <h1 className=" text-[70%] font-bold text-white">{title}</h1>
-        {neopatentato && (
+        <h1 className=" text-[70%] font-bold text-white">{titolo}</h1>
+        {neopatentati && (
           <span className=" text-[0.5rem]  bg-lime-400 px-2 py-1 rounded-md">
             Neopatentato
           </span>
         )}
       </div>
       <div className="  relative top-0">
-        <Image alt={"image"} src={image} />
+        <Image alt={"image"} height={image.dimensions?.height} width={image.dimensions?.width} src={image.url!} />
       </div>
 
       <div className=" w-full gap-1 relative top-0 flex flex-wrap">

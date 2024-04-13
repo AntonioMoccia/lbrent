@@ -14,6 +14,8 @@ import {
 
 import { Toaster } from "@/components/toast/toaster";
 import { CarImage, HeroImage } from "@/constants";
+import { createClient } from "@/prismicio";
+import { PrismicRichText } from "@prismicio/react";
 import React from "react";
 
 const AccordionItems = [
@@ -48,30 +50,24 @@ const AccordionItems = [
 
 ];
 
-function LungoTermine() {
+
+async function LungoTermine() {
+
+  const client = createClient();
+  const page = await client.getSingle('lungotermine');
   return (
     <div>
       <Hero
-        imageSrc={CarImage}
+        image={page.data.image}
         fullScreen={false}
         h1={
-          <>
-            NOLEGGIO
-            <br /> LUNGO TERMINE
-          </>
+          page.data.titolo
         }
         p={""}
       />
       <section className=" bg-black w-full flex justify-center py-5">
         <p className=" text-white font-extralight text-center px-4 pt-8 max-w-screen-lg">
-          Scopri i vantaggi del noleggio a lungo termine e goditi
-          l&apos;esperienza di avere un&apos;auto sempre a tua disposizione,
-          abbattendo i costi legati all&apos;acquisto, alla proprietà e alla
-          manutenzione. <br />
-          <br />
-          Con il noleggio a lungo termine, potrai beneficiare di un canone
-          mensile fisso concordato e scegliere il modello di auto che preferisci
-          tra una vasta gamma di opzioni sul mercato
+       <PrismicRichText field={page.data.descrizione} />
         </p>
       </section>
       <section className="w-full flex justify-center items-center">
