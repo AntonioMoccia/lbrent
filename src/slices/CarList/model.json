@@ -28,6 +28,22 @@
             "thumbnails": []
           }
         },
+        "secondimage": {
+          "type": "Image",
+          "config": {
+            "label": "secondImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "thirdimage": {
+          "type": "Image",
+          "config": {
+            "label": "thirdImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "neopatentati": {
           "type": "Boolean",
           "config": {

@@ -324,6 +324,26 @@ export interface CarListSliceDefaultItem {
   image: prismic.ImageField<never>;
 
   /**
+   * secondImage field in *CarList → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: car_list.items[].secondimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  secondimage: prismic.ImageField<never>;
+
+  /**
+   * thirdImage field in *CarList → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: car_list.items[].thirdimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  thirdimage: prismic.ImageField<never>;
+
+  /**
    * neopatentati field in *CarList → Items*
    *
    * - **Field Type**: Boolean

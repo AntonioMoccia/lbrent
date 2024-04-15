@@ -37,7 +37,7 @@ export default async function Home() {
           <Slider data={filterSliceByType("gallery") as Content.GallerySlice} />
         </div>
       </div>
-      <Map />
+        <Map />
     </main>
   );
 }

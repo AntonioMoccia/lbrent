@@ -2,7 +2,7 @@ import React from 'react'
 
 function Map() {
   return (
-    <section className='bg-black lg:pt-14'>
+    <section className='bg-black lg:py-14'>
       <h1 className=' uppercase w-full text-center text-white font-extrabold text-2xl'>Dove puoi trovarci</h1>
       <div className='w-full  flex justify-center min-h-[40vh] h-[40vh] lg:h-[60vh] grayscale mt-10'>
         <iframe

@@ -66,9 +66,9 @@ async function LungoTermine() {
         p={""}
       />
       <section className=" bg-black w-full flex justify-center py-5">
-        <p className=" text-white font-extralight text-center px-4 pt-8 max-w-screen-lg">
+        <div className=" text-white font-extralight text-center px-4 pt-8 max-w-screen-lg">
        <PrismicRichText field={page.data.descrizione} />
-        </p>
+        </div>
       </section>
       <section className="w-full flex justify-center items-center">
         {/** react use form e zod for validation */}
