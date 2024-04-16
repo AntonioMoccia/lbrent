@@ -10,6 +10,8 @@ function Card({
   posti,
   carburante,
   cambio,
+  thirdimage,
+  secondimage
 }: Content.CarListSliceDefaultItem) {
   return (
     <div className=" bg-black rounded-2xl items-start flex flex-col justify-between py-3 px-2 border-2 max-h-60 max-w-60 border-white min-h-60">

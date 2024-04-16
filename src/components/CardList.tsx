@@ -79,6 +79,8 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
               key={i}
               titolo={item.titolo}
               image={item.image}
+              secondimage={item.secondimage}
+              thirdimage={item.thirdimage}
               neopatentati={item.neopatentati}
               posti={item.posti as number}
               carburante={item.carburante}
