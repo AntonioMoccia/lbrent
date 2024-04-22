@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -62,8 +62,15 @@ function Navbar() {
           </ul>
         </div>
         <div className=" md:flex md:gap-2 hidden ">
-          <FaWhatsapp className=" cursor-pointer" size={25} />
-          <FaInstagram className=" cursor-pointer" size={25} />
+          <a target="__blank" href="https://www.instagram.com/lb_rent_/">
+            <FaInstagram className="text-xl bg-transparent text-black" />
+          </a>
+          <a
+            target="__blank"
+            href="https://www.facebook.com/autonoleggiolbrent/"
+          >
+            <FaFacebook className="text-xl bg-transparent text-black" />
+          </a>
         </div>
       </nav>
     </header>

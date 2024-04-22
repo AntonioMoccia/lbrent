@@ -1,0 +1,17 @@
+{
+  "format": "custom",
+  "id": "card",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      }
+    }
+  },
+  "label": "Card",
+  "repeatable": true,
+  "status": true
+}

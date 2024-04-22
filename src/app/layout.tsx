@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import PrivacyControl from "@/components/PrivacyControl";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <PrivacyControl />
+      </head>
       <body>
         <Navbar />
         <main>

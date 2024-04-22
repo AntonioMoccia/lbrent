@@ -102,6 +102,20 @@ export type BreveTermineDocument<Lang extends string = string> =
     Lang
   >;
 
+interface CardDocumentData {}
+
+/**
+ * Card document from Prismic
+ *
+ * - **API ID**: `card`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CardDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<CardDocumentData>, "card", Lang>;
+
 type HomeDocumentDataSlicesSlice = GallerySlice | ChiSiamoSlice;
 
 /**
@@ -296,6 +310,7 @@ export type LungotermineDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BreveTermineDocument
+  | CardDocument
   | HomeDocument
   | LungotermineDocument;
 
@@ -520,6 +535,8 @@ declare module "@prismicio/client" {
       BreveTermineDocument,
       BreveTermineDocumentData,
       BreveTermineDocumentDataSlicesSlice,
+      CardDocument,
+      CardDocumentData,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
