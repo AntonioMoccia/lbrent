@@ -25,7 +25,7 @@ function Pagination({
         pageCount={pagesNumber}
         previousLabel={<RiArrowDropLeftLine className=" text-4xl" />}
         renderOnZeroPageCount={null}
-        activeClassName=" text-center bg-black border-white border-2 rounded-full w-[30px] h-[30px] text-center"
+        activeClassName=" text-center items-center flex justify-content bg-black border-white border-2 rounded-full w-[30px] h-[30px] text-center"
         nextClassName=" text-white"
         previousClassName=" text-white text-xl"
         pageClassName=" bg-white rounded-full w-[30px] h-[30px] text-center flex justify-center items-center"

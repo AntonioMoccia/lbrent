@@ -8,7 +8,7 @@ function CookiePolicyButton() {
         document.body.appendChild(script)
     },[])
   return (
-    <a href="https://www.iubenda.com/privacy-policy/70153084/cookie-policy" className="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a>
+    <a href="https://www.iubenda.com/privacy-policy/70153084/cookie-policy"  title="Cookie Policy ">Cookie Policy</a>
   )
 }
 

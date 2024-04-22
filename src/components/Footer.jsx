@@ -37,8 +37,8 @@ function Footer() {
             <div className='w-full flex justify-center items-center'>
                 <div className=' w-[80%] pl-[10%] h-[1px] bg-black' />{/**Divider */}
             </div>
-            <div className=' h-1/2 flex justify-center items-center'>
-                2077 Untitled Ui. All rights reserved
+            <div className=' h-1/2 pt-4 text-sm text-center'>
+                created by {''} <a href="https://antoniomoccia.com" target='__blank'> Antonio Moccia</a>
             </div>
         </footer>
     )

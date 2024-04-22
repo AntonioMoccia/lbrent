@@ -8,7 +8,7 @@ function PrivacyPolicyButton() {
         document.body.appendChild(script)
     },[])
   return (
-    <a href="https://www.iubenda.com/privacy-policy/70153084" className="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a>
+    <a href="https://www.iubenda.com/privacy-policy/70153084" title="Privacy Policy ">Privacy Policy</a>
   )
 }
 
