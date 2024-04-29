@@ -18,11 +18,11 @@ async function BreveTermine() {
           image={page.data.image}
           fullScreen={false}
           h1={page.data.titolo}
-          p={""}
-        />
+          
+          />
       </section>
       <section className=" bg-black w-full flex justify-center py-5">
-        <div className=" text-white font-extralight text-center px-4 pt-8 max-w-screen-lg">
+        <div className=" text-white font-extralight text-center px-4 py-10   max-w-screen-lg">
           <PrismicRichText field={page.data.descrizione} />
         </div>
       </section>

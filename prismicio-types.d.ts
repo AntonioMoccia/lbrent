@@ -134,26 +134,26 @@ interface HomeDocumentData {
   image: prismic.ImageField<never>;
 
   /**
-   * Spot titolo field in *Home*
+   * spot_titolo field in *Home*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: home.spot_titolo
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  spot_titolo: prismic.KeyTextField;
+  spot_titolo: prismic.RichTextField;
 
   /**
-   * Spot subtitle field in *Home*
+   * spot_subtitle field in *Home*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: home.spot_subtitle
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  spot_subtitle: prismic.KeyTextField;
+  spot_subtitle: prismic.RichTextField;
 
   /**
    * Slice Zone field in *Home*

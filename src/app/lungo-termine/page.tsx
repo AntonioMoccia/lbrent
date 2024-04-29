@@ -63,7 +63,6 @@ async function LungoTermine() {
         h1={
           page.data.titolo
         }
-        p={""}
       />
       <section className=" bg-black w-full flex justify-center py-5">
         <div className=" text-white font-extralight text-center px-4 pt-8 max-w-screen-lg">

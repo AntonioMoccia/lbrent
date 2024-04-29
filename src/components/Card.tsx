@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 
 import Image from "next/image";
 import { LuUser2 } from "react-icons/lu";
+import Slider from "./Slider";
+import { useState } from "react";
 
 function Card({
   titolo,
@@ -13,8 +15,12 @@ function Card({
   thirdimage,
   secondimage
 }: Content.CarListSliceDefaultItem) {
+
+const [isOpenedSlider, setIsOpenedSlider] = useState(false)
+
   return (
-    <div className=" bg-black rounded-2xl items-start flex flex-col justify-between py-3 px-2 border-2 max-h-60 max-w-60 border-white min-h-60">
+    <>
+    <div onClick={()=>setIsOpenedSlider(true)} className=" bg-black rounded-2xl items-start flex flex-col justify-between py-3 px-2 border-2 max-h-60 max-w-60 border-white min-h-60">
       <div className=" relative top-0 min-h-[3rem]">
         <h1 className=" text-[70%] font-bold text-white">{titolo}</h1>
         {neopatentati && (
@@ -45,7 +51,32 @@ function Card({
         </div>
       </div>
     </div>
-  );
+    {
+      isOpenedSlider && (
+        <div onClick={(e)=>{
+
+        }} className=" h-screen w-screen z-50 fixed top-0 left-0 ">
+          <div className=" opacity-95  bg-black w-full h-full flex justify-center items-center" />
+          <div className=" absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] w-full lg:w-3/4 z-40">
+    <Slider data={{
+      items:[
+        {
+          gallery_image:image
+      },
+      {
+        gallery_image:secondimage
+      },
+      {
+        gallery_image:thirdimage
+      }
+    ],
+  }} />
+  </div>
+  </div>
+      )
+    }
+  </>
+);
 }
 
 export default Card;

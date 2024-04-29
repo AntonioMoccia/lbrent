@@ -52,7 +52,7 @@ function SlidePrevButton() {
   );
 }
 
-function Slider({ data }: { data: Content.GallerySlice }) {
+function Slider({ data }: { data: Partial<Content.GallerySlice> }) {
   return (
     <div className="w-full min-h-60">
       <Swiper
@@ -61,7 +61,9 @@ function Slider({ data }: { data: Content.GallerySlice }) {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        {data.items.map((slide, i) => {
+        {data?.items?.map((slide, i) => {
+          console.log(slide);
+          
           return (
             <SwiperSlide key={slide.gallery_image.id}>
               <Image

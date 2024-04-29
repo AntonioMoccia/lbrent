@@ -16,9 +16,6 @@ function Navbar() {
 
     setOpen(!open);
   };
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
 
   return (
     <header className=" bg-white h-20 ">
@@ -38,11 +35,11 @@ function Navbar() {
         </div>
         <div
           className={clsx(
-            "nav-links duration-300 md:static lg:top-0 absolute lg:relative py-5 lg:py-0 bg-white md:min-h-fit left-0 md:w-1/2 w-full flex justify-center items-center px-5",
+            "nav-links duration-300 z-50 lg:static lg:top-0 absolute lg:relative py-5 lg:py-0 bg-white lg:min-h-fit left-0 lg:w-1/2 w-full flex justify-center items-center px-5",
             open ? "top-20" : "top-[-100%] "
           )}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] w-full gap-8">
+          <ul className="flex lg:flex-row flex-col lg:items-center lg:gap-[4vw] w-full gap-8">
             {MENU_LINKS.map((item, index) => (
               <li key={index} className=" text-center">
                 <Link
@@ -61,7 +58,7 @@ function Navbar() {
             ))}
           </ul>
         </div>
-        <div className=" md:flex md:gap-2 hidden ">
+        <div className=" lg:flex lg:gap-2 hidden ">
           <a target="__blank" href="https://www.instagram.com/lb_rent_/">
             <FaInstagram className="text-xl bg-transparent text-black" />
           </a>
@@ -80,8 +77,8 @@ function Navbar() {
 export default Navbar;
 
 /**
+ * 
  *  <div className=" w-auto">
           <Image src={Logo} alt="Alt logo" width={100} height={68} />
         </div>
-
  */
