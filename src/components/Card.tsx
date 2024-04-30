@@ -73,7 +73,7 @@ function Card({
               className=" text-white"
             />
           </div>
-          <div className=" opacity-95  bg-black w-full h-full flex justify-center items-center" />
+          <div onClick={()=>setIsOpenedSlider(false)} className=" opacity-95  bg-black w-full h-full flex justify-center items-center"/>
           <div className=" absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] w-full lg:w-3/4 z-50">
             <Slider
               data={{
