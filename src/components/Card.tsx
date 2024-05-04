@@ -3,9 +3,9 @@ import { Content } from "@prismicio/client";
 import Image from "next/image";
 import { LuUser2 } from "react-icons/lu";
 import Slider from "./Slider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoCloseCircle } from "react-icons/io5";
-
+import _ from 'lodash'
 function Card({
   titolo,
   image,
@@ -59,7 +59,7 @@ function Card({
           </div>
         </div>
       </div>
-      {isOpenedSlider && (
+      { !_.isEmpty(secondimage) && !_.isEmpty(thirdimage) ? isOpenedSlider && (
         <div
           onClick={(e) => {}}
           className=" h-screen w-screen z-30 fixed top-0 left-0 "
@@ -92,7 +92,7 @@ function Card({
             />
           </div>
         </div>
-      )}
+      ):null}
     </>
   );
 }

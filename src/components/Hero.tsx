@@ -20,23 +20,23 @@ function Hero({ image, h1, p, fullScreen = true, reverse = false }: HeroProps) {
         ` 
             bg-black justify-start flex flex-col items-center overflow-hidden lg:pt-10
             rounded-t-3xl text-white `,
-        fullScreen ? `h-[calc(100vh-5rem)]` : `h-1/2`,
+        fullScreen ? `min-h-[calc(100vh-5rem)]` : `h-1/2`,
         reverse
-          ? ` flex-col-reverse justify-center lg:justify-start gap-10 lg:flex-col`
+          ? ` flex-col-reverse justify-center lg:justify-start  gap-10 lg:flex-col`
           : `flex-col`
       )}
     >
-      <div className=" relative lg:w-[45vw] w-full ">
+      <div className=" relative lg:w-[45vw] w-full max-h-[calc(50vh-5rem)] lg:min-h-0  min-h-[350px]  lg:max-h-screen ">
         <Image
           alt={image.alt!}
-          className=" w-full max-w-screen-lg rounded-t-3xl"
+          className=" w-full max-w-screen-lg rounded-t-3xl "
           src={image.url as string}
           height={image.dimensions?.height}
           width={image.dimensions?.width}
         />
       </div>
       <div className=" mt-10 lg:mt-5">
-        <div className=" text-[#B11000] font-extrabold text-2xl text text-center  max-w-screen-sm w-full leading-[-1%]">
+        <div className=" text-[#B11000]  lg:max-h-screen font-extrabold text-2xl max-h-[calc(50vh-5rem)] text-center  max-w-screen-sm w-full leading-[-1%]">
           <PrismicRichText field={h1} />
         </div>
 

@@ -8,7 +8,7 @@ import CarImage from '../assets/car.png'
 const MENU_LINKS = [
     {
         label: 'Home',
-        href: "#"
+        href: "/"
     },
     {
         label: 'Breve termine',

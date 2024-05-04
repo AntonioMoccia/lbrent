@@ -28,7 +28,7 @@ function Navbar() {
           </div>
           <div
             onClick={handleButtonClick}
-            className=" lg:hidden flex  justify-center items-center w-10 h-10 rounded-lg bg-black text-white"
+            className=" cursor-pointer lg:hidden flex  justify-center items-center w-10 h-10 rounded-lg bg-black text-white"
           >
             {open ? <IoClose /> : <IoMenu />}
           </div>

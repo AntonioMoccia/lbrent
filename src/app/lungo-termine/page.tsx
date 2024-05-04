@@ -64,7 +64,7 @@ async function LungoTermine() {
           page.data.titolo
         }
       />
-      <section className=" bg-black w-full flex justify-center py-5">
+      <section className=" bg-black w-full flex justify-center py-10">
         <div className=" text-white font-extralight text-center px-4 pt-8 max-w-screen-lg">
        <PrismicRichText field={page.data.descrizione} />
         </div>

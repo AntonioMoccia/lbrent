@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function SearchBar({onSearchChange}:{onSearchChange:(value:string)=>void}) {
+function SearchBar({onSearchChange}:{onSearchChange:(e:React.ChangeEvent<HTMLInputElement>)=>void}) {
 
   return (
     <div className="relative">
@@ -8,8 +8,9 @@ function SearchBar({onSearchChange}:{onSearchChange:(value:string)=>void}) {
       type="text"
       className="pl-10 w-full max-w-[85rem] pr-4 py-1 border-[0.2rem] rounded-xl border-black placeholder-black"
       placeholder="Ricerca"
+      name="titolo"
       onChange={(e)=>{
-        onSearchChange(e.currentTarget.value)
+        onSearchChange(e)
       }}
     />
     <div

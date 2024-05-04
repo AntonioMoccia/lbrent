@@ -145,7 +145,7 @@ function WhatsAppWidget() {
         </div>
       )}
       <div
-        className=" cursor-pointer text-2xl flex justify-center items-center w-12 h-12 lg:h-18 lg:w-18 p-3 rounded-full absolute bottom-0 right-0 text-white bg-green-900"
+        className=" cursor-pointer text-2xl flex justify-center items-center w-10 h-10 lg:h-18 lg:w-18 p-3 rounded-full absolute bottom-0 right-0 text-white bg-green-900"
         onClick={() => setOpen(!open)}
       >
         <FaWhatsapp />

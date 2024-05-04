@@ -380,6 +380,18 @@ export interface CarListSliceDefaultItem {
   posti: prismic.NumberField;
 
   /**
+   * segmento field in *CarList → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: car_list.items[].segmento
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  segmento: prismic.SelectField<
+    "utilitaria" | "supercar" | "suv" | "crossover"
+  >;
+
+  /**
    * cambio field in *CarList → Items*
    *
    * - **Field Type**: Select

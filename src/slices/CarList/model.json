@@ -60,6 +60,19 @@
             "placeholder": ""
           }
         },
+        "segmento": {
+          "type": "Select",
+          "config": {
+            "label": "segmento",
+            "placeholder": "",
+            "options": [
+              "utilitaria",
+              "supercar",
+              "suv",
+              "crossover"
+            ]
+          }
+        },
         "cambio": {
           "type": "Select",
           "config": {

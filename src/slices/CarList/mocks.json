@@ -123,6 +123,14 @@
 							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
+					],
+					[
+						"segmento",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "supercar",
+							"type": "Select"
+						}
 					]
 				]
 			}
