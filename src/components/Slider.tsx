@@ -5,7 +5,7 @@ import { Content } from "@prismicio/client";
 
 import "swiper/css";
 
-function SlideNextButton() {
+export function SlideNextButton() {
   const swiper = useSwiper();
 
   return (
@@ -28,7 +28,7 @@ function SlideNextButton() {
     </button>
   );
 }
-function SlidePrevButton() {
+export function SlidePrevButton() {
   const swiper = useSwiper();
 
   return (
@@ -54,7 +54,7 @@ function SlidePrevButton() {
 
 function Slider({ data }: { data: Partial<Content.GallerySlice> }) {
   return (
-    <div className="w-full min-h-60">
+    <div  id={'home-slider'} className="w-full min-h-60">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}

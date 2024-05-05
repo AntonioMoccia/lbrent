@@ -2,10 +2,11 @@ import { Content } from "@prismicio/client";
 
 import Image from "next/image";
 import { LuUser2 } from "react-icons/lu";
-import Slider from "./Slider";
+import Slider, { SlideNextButton, SlidePrevButton } from "./Slider";
 import { useEffect, useState } from "react";
 import { IoCloseCircle } from "react-icons/io5";
-import _ from 'lodash'
+import _ from "lodash";
+import { Swiper, SwiperSlide } from "swiper/react";
 function Card({
   titolo,
   image,
@@ -59,40 +60,66 @@ function Card({
           </div>
         </div>
       </div>
-      { !_.isEmpty(secondimage) && !_.isEmpty(thirdimage) ? isOpenedSlider && (
-        <div
-          onClick={(e) => {}}
-          className=" h-screen w-screen z-30 fixed top-0 left-0 "
-        >
-          <div className="absolute right-5 top-5 z-50">
-            <IoCloseCircle
-              onClick={() => {
-                setIsOpenedSlider(false);
-              }}
-              size={40}
-              className=" text-white"
-            />
-          </div>
-          <div onClick={()=>setIsOpenedSlider(false)} className=" opacity-95  bg-black w-full h-full flex justify-center items-center"/>
-          <div className=" absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] w-full lg:w-3/4 z-50">
-            <Slider
-              data={{
-                items: [
-                  {
-                    gallery_image: image,
-                  },
-                  {
-                    gallery_image: secondimage,
-                  },
-                  {
-                    gallery_image: thirdimage,
-                  },
-                ],
-              }}
-            />
-          </div>
-        </div>
-      ):null}
+      {!_.isEmpty(secondimage) && !_.isEmpty(thirdimage)
+        ? isOpenedSlider && (
+            <div
+              onClick={(e) => {}}
+              className=" h-screen w-screen z-30 fixed top-0 left-0 "
+            >
+              <div className="absolute right-5 top-5 z-50">
+                <IoCloseCircle
+                  onClick={() => {
+                    setIsOpenedSlider(false);
+                  }}
+                  size={40}
+                  className=" text-white"
+                />
+              </div>
+              <div
+                onClick={() => setIsOpenedSlider(false)}
+                className=" opacity-95  bg-black w-full h-full flex justify-center items-center"
+              />
+              <div className=" absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] w-full lg:w-3/4 z-50">
+                <div id="card-slider" className="w-full p-4 min-h-60">
+                  <Swiper spaceBetween={10} slidesPerView={1}>
+                    <SwiperSlide>
+                      <Image
+                        quality={100}
+                        height={image.dimensions?.height}
+                        width={image.dimensions?.width}
+                        src={image.url!}
+                        alt={image.alt!}
+                        className="w-[100%] rounded-4xl"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Image
+                        quality={100}
+                        height={secondimage.dimensions?.height}
+                        width={secondimage.dimensions?.width}
+                        src={secondimage.url!}
+                        alt={secondimage.alt!}
+                        className="w-[100%] rounded-4xl"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <Image
+                        quality={100}
+                        height={thirdimage.dimensions?.height}
+                        width={thirdimage.dimensions?.width}
+                        src={thirdimage.url!}
+                        alt={thirdimage.alt!}
+                        className="w-[100%] rounded-4xl"
+                      />
+                    </SwiperSlide>
+                    <SlidePrevButton />
+                    <SlideNextButton />
+                  </Swiper>
+                </div>
+              </div>
+            </div>
+          )
+        : null}
     </>
   );
 }
