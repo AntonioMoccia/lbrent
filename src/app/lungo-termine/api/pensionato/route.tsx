@@ -20,6 +20,8 @@ export async function POST(request: Request) {
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
+  const phonenumber = formData.get("phonenumber");
+  const email = formData.get("email");
 
   try {
     const data = await resend.emails.send({
@@ -32,6 +34,8 @@ export async function POST(request: Request) {
           nome={nome as string}
           cognome={cognome as string}
           iban={iban as string}
+          phonenumber={phonenumber as string}
+          email={email as string}
         />
       ),
       attachments: [

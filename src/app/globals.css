@@ -116,3 +116,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+#mapDiv > div > div.gm-style > div{
+  border: none;
+  display: none;
+
+}

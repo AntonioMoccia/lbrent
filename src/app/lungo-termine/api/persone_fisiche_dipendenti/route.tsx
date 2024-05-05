@@ -20,7 +20,8 @@ export async function POST(request: Request) {
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
-
+  const phonenumber = formData.get("phonenumber");
+  const email = formData.get("email");
   try {
     const data = await resend.emails.send({
       from: "Persone fisiche dipendenti <onboarding@resend.dev>",
@@ -28,6 +29,8 @@ export async function POST(request: Request) {
       subject: "Richiesta lungo termine - Persone fisiche dipendenti",
       react: (
         <EmailTemplate
+          phonenumber={phonenumber as string}
+          email={email as string}
           tipologia={"persone fisiche dipendenti"}
           nome={nome as string}
           cognome={cognome as string}

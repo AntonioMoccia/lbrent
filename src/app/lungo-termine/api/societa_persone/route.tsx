@@ -18,9 +18,7 @@ export async function POST(request: Request) {
   const ultimo_modello_unico_societa = await toBuffer(
     formData.get("ultimo_modello_unico_societa") as File
   );
-  const quadro_iq = await toBuffer(
-    formData.get("quadro_iq") as File
-  );
+  const quadro_iq = await toBuffer(formData.get("quadro_iq") as File);
   const ultimo_modello_unico_socio_accomodatario = await toBuffer(
     formData.get("ultimo_modello_unico_socio_accomodatario") as File
   );
@@ -36,6 +34,8 @@ ultimo_modello_unico_socio_accomodatario
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
+  const phonenumber = formData.get("phonenumber");
+  const email = formData.get("email");
 
   try {
     const data = await resend.emails.send({
@@ -44,6 +44,8 @@ ultimo_modello_unico_socio_accomodatario
       subject: "Richiesta lungo termine - Societa persone",
       react: (
         <EmailTemplate
+          email={email as string}
+          phonenumber={phonenumber as string}
           tipologia={"Societa persone"}
           nome={nome as string}
           cognome={cognome as string}

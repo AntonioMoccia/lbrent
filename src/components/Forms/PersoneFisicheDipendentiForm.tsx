@@ -128,7 +128,28 @@ function PersoneFisicheDipendentiForm() {
               value={watcher["cognome"]}
               inputProps={register("cognome")}
             />
-
+            <TextField
+              type="text"
+              placeholder="Email"
+              error={errors.email?.message as string}
+              value={watcher["email"]}
+              inputProps={register("email", {
+                required: "Campo obbligatorio",
+                pattern: {
+                  value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                  message: "Inserire una mail valida",
+                },
+              })}
+            />
+            <TextField
+              type='number'
+              placeholder="Telefono"
+              error={errors.phonenumber?.message as string}
+              value={watcher["phonenumber"]}
+              inputProps={register("phonenumber",{
+                required: "Campo obbligatorio",
+              })}
+            />
             <TextField
               type="text"
               placeholder="Iban"

@@ -15,14 +15,15 @@ export async function POST(request: Request) {
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
-
+  const phonenumber = formData.get("phonenumber");
+  const email = formData.get("email");
 
   try {
     const data = await resend.emails.send({
       from: "Societa cooperativa <onboarding@resend.dev>",
       to: ["moccia.ant@gmail.com"],
       subject: "Richiesta lungo termine - Societa cooperativa",
-      react: <EmailTemplate tipologia={'societa cooperativa'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
+      react: <EmailTemplate email={email as string} phonenumber={phonenumber as string} tipologia={'societa cooperativa'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
       attachments: [
         {
           filename: documento_identita_firmatario.fileName,

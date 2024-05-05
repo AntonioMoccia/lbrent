@@ -122,7 +122,7 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                 <div key={item.segmento} className="flex items-center gap-2">
                   <input
                     className="  relative peer shrink-0
-                    appearance-none w-6 h-6 border-4 border-black rounded-sm bg-white
+                    appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
                     mt-1
                    checked:bg-black checked:border-0"
                     onChange={segmentoChangeFilter}
@@ -166,7 +166,7 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                   });
                 }}
                 className="  relative peer shrink-0
-                appearance-none w-6 h-6 border-4 border-black rounded-sm bg-white
+                appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
                 mt-1
                 checked:bg-black checked:border-0"
                 type="checkbox"
@@ -196,7 +196,10 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
           </fieldset>
 
           <Accordion type="single" collapsible className=" block w-[60%] lg:hidden">
-            <Item label="Vedi Filtri" itemNumber={1}>
+            <div className=" decoration-0">
+
+
+            <Item underline={false} label="Vedi Filtri" itemNumber={1}>
               <fieldset className=" z-30 flex flex-col ml-10 gap-3 ">
                 {uniqBy(Cards.items, "segmento").map((item) => {
                   return (
@@ -206,7 +209,7 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                     >
                       <input
                         className="  relative peer shrink-0
-                    appearance-none w-6 h-6 border-4 border-black rounded-sm bg-white
+                    appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
                     mt-1
                    checked:bg-black checked:border-0"
                         onChange={segmentoChangeFilter}
@@ -263,7 +266,7 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                         return filter.field == "neopatentati";
                       })[0].value}
                     className="  relative peer shrink-0
-                appearance-none w-6 h-6 border-4 border-black rounded-sm bg-white
+                appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
                 mt-1
                 checked:bg-black checked:border-0"
                     type="checkbox"
@@ -295,6 +298,7 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                 </div>
               </fieldset>
             </Item>
+            </div>
           </Accordion>
         </div>
       </section>

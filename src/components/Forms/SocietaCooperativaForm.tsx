@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useForm,  useWatch } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 
 import { TextField, UploadFile } from "./Fields";
 import { useToast } from "../toast/use-toast";
@@ -67,7 +67,7 @@ function SocietaCooperativaForm() {
             <UploadFile
               testo="Documento di identità firmatario"
               error={errors.documento_identita_firmatario?.message as string}
-              value={watcher['documento_identita_firmatario']}
+              value={watcher["documento_identita_firmatario"]}
               inputProps={register("documento_identita_firmatario", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
@@ -77,8 +77,10 @@ function SocietaCooperativaForm() {
             />
             <UploadFile
               testo="Tesserino codice fiscale firmatario"
-              error={errors.tesserino_codice_fiscale_firmatario?.message as string}
-              value={watcher['tesserino_codice_fiscale_firmatario']}
+              error={
+                errors.tesserino_codice_fiscale_firmatario?.message as string
+              }
+              value={watcher["tesserino_codice_fiscale_firmatario"]}
               inputProps={register("tesserino_codice_fiscale_firmatario", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
@@ -89,7 +91,7 @@ function SocietaCooperativaForm() {
             <UploadFile
               testo="Visura camerale (ultimi 6 mesi)"
               error={errors.visura_camerale?.message as string}
-              value={watcher['visura_camerale']}
+              value={watcher["visura_camerale"]}
               inputProps={register("visura_camerale", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
@@ -100,7 +102,7 @@ function SocietaCooperativaForm() {
             <UploadFile
               testo="Ultimo bilacio depositato + nota integrativa + ricevuta di presentazione"
               error={errors.ultimo_modello_unico?.message as string}
-              value={watcher['ultimo_modello_unico']}
+              value={watcher["ultimo_modello_unico"]}
               inputProps={register("ultimo_modello_unico", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
@@ -117,25 +119,45 @@ function SocietaCooperativaForm() {
               type="text"
               placeholder="Nome"
               error={errors.nome?.message as string}
-              value={watcher['nome']}
+              value={watcher["nome"]}
               inputProps={register("nome")}
             />
-              <TextField
+            <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
-              value={watcher['cognome']}
+              value={watcher["cognome"]}
               inputProps={register("cognome")}
             />
-
+            <TextField
+              type="text"
+              placeholder="Email"
+              error={errors.email?.message as string}
+              value={watcher["email"]}
+              inputProps={register("email", {
+                required: "Campo obbligatorio",
+                pattern: {
+                  value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                  message: "Inserire una mail valida",
+                },
+              })}
+            />
+            <TextField
+              type="number"
+              placeholder="Telefono"
+              error={errors.phonenumber?.message as string}
+              value={watcher["phonenumber"]}
+              inputProps={register("phonenumber", {
+                required: "Campo obbligatorio",
+              })}
+            />
             <TextField
               type="text"
               placeholder="Iban"
               error={errors.iban?.message as string}
-              value={watcher['iban']}
+              value={watcher["iban"]}
               inputProps={register("iban")}
             />
-
           </div>
           <label
             htmlFor="submitButton"

@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 interface ItemProps {
   itemNumber: number;
   label: string;
+  underline?:boolean
 }
 
 const Accordion = AccordionPrimitive.Root;
@@ -62,11 +63,14 @@ const Item = ({
   children,
   itemNumber,
   label,
+  underline=true
 }: React.PropsWithChildren<ItemProps>) => {
   return (
     <>
       <AccordionItem value={`item-${itemNumber}`}>
-        <AccordionTrigger>{label}</AccordionTrigger>
+        <AccordionTrigger className={
+          underline ? '' : 'hover:no-underline no-underline'
+        }>{label}</AccordionTrigger>
         <AccordionContent>{children}</AccordionContent>
       </AccordionItem>
     </>

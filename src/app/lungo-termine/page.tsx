@@ -74,7 +74,7 @@ async function LungoTermine() {
         <div className=" md:w-[80%] w-full max-w-screen-mpconstd">
           <Accordion type="single" collapsible className="w-full">
             {AccordionItems.map((item: any, index: number) => (
-              <Item label={item.label} itemNumber={index + 1} key={index}>
+              <Item underline={false} label={item.label} itemNumber={index + 1} key={index}>
                 {item.content}
               </Item>
             ))}

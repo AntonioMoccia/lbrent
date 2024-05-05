@@ -38,8 +38,8 @@ function UploadFile(props: UploadFileProps) {
                   {value[0].name}
                 </p>
               ) : null}
-              <p className=" py-0 px-5 text-xs max-w-full">
-                <span className=" text-red-600 text-sm">
+              <p className=" py-2 px-2 text-xs max-w-full">
+                <span className=" text-red-600 text-xs w-full">
                   {error && `* ${error}`}
                 </span>
               </p>

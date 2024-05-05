@@ -24,13 +24,15 @@ iscrizione_albo
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
+  const phonenumber = formData.get("phonenumber");
+  const email = formData.get("email");
 
   try {
     const data = await resend.emails.send({
       from: "Libero professionista <onboarding@resend.dev>",
       to: ["moccia.ant@gmail.com"],
       subject: "Richiesta lungo termine - Libero professionista",
-      react: <EmailTemplate tipologia={'libero professionista'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
+      react: <EmailTemplate phonenumber={phonenumber as string} email={email as string} tipologia={'libero professionista'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
       attachments: [
         {
           filename: documento_identita.fileName,

@@ -17,10 +17,10 @@ function Footer() {
                 </div>
                 <div>
                     <ul className=' flex gap-2'>
-                        <li className=' text-xs lg:text' >
+                        <li className=' text-[0.65rem] lg:text' >
                             <PrivacyPolicyButton />
                         </li>
-                        <li className=' text-xs lg:text' >
+                        <li className=' text-[0.65rem]  lg:text' >
                             <CookiePolicyButton />
                         </li>
                     </ul>
@@ -37,7 +37,7 @@ function Footer() {
             <div className='w-full flex justify-center items-center'>
                 <div className=' w-[80%] pl-[10%] h-[1px] bg-black' />{/**Divider */}
             </div>
-            <div className=' h-1/2 pt-4 text-sm text-center'>
+            <div className=' h-1/2 pt-4 text-[0.6rem] text-center'>
                 created by {''} <a href="https://antoniomoccia.com" target='__blank'> Antonio Moccia</a>
             </div>
         </footer>

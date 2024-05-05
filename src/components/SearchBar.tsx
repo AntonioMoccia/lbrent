@@ -6,7 +6,7 @@ function SearchBar({onSearchChange}:{onSearchChange:(e:React.ChangeEvent<HTMLInp
     <div className="relative">
     <input
       type="text"
-      className="pl-10 w-full max-w-[85rem] pr-4 py-1 border-[0.2rem] rounded-xl border-black placeholder-black"
+      className="pl-10 w-full max-w-[85rem] pr-4 py-1 border-2 rounded-xl border-black placeholder-black"
       placeholder="Ricerca"
       name="titolo"
       onChange={(e)=>{

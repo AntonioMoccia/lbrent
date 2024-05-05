@@ -10,6 +10,7 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.6",
     "@hookform/resolvers": "^3.3.4",
     "@prismicio/client": "^7.4.0",
     "@prismicio/next": "^1.5.0",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.38",
+    "@types/google.maps": "^3.55.8",
     "@types/lodash": "^4.17.0",
     "@types/node": "^20",
     "@types/react": "^18",
