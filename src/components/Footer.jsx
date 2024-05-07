@@ -9,8 +9,8 @@ import CookiePolicyButton from './CookiePolicyButton';
 function Footer() {
     return (
         <footer className=' h-[150px] max-h-[200px] pt-5 lg:flex lg:flex-col lg:justify-center lg:items-center'>
-            <div className=' h-1/2 lg:w-[80%] flex justify-between items-center px-4'>
-                <div>
+            <div className=' h-1/2 lg:w-[80%] flex justify-between items-center px-4 '>
+                <div className=' w-16'>
                     <Link href={'/'}>
                         <Image src={Logo} alt='Alt logo' width={100} height={68} />
                     </Link>
@@ -25,7 +25,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className=' flex gap-2'>
+                <div className=' flex gap-2 justify-center items-center w-16 '>
                     <a target='__blank' href='https://www.instagram.com/lb_rent_/'>
                         <FaInstagram className='text-xl bg-transparent text-black' />
                     </a>

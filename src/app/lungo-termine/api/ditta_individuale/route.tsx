@@ -65,11 +65,9 @@ export async function POST(request: Request) {
         },
       ],
     });
-    console.log(data);
 
     return Response.json(data);
   } catch (error) {
-    console.log(error);
 
     return Response.json({ error });
   }

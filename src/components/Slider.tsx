@@ -58,12 +58,11 @@ function Slider({ data }: { data: Partial<Content.GallerySlice> }) {
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+/*         onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)} */
       >
         {data?.items?.map((slide, i) => {
-          console.log(slide);
-          
+              
           return (
             <SwiperSlide key={slide.gallery_image.id}>
               <Image

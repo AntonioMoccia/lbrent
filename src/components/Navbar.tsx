@@ -12,8 +12,6 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const handleButtonClick = () => {
-    console.log("click");
-
     setOpen(!open);
   };
 

@@ -47,7 +47,6 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
         field: "segmento",
         value: [],
         validator: (item: any, filterValue: any[]) => {
-          console.log(filterValue);
 
           if (filterValue.length == 0) {
             return true;
