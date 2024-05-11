@@ -123,3 +123,12 @@
   display: none;
 
 }
+#home-title  .title-word{
+  overflow-y: hidden;
+} 
+#home-title .title-word > div{
+  transform: translateY(100%);
+}
+#scroll-down  .title-word  .char{
+  opacity: 0;
+}

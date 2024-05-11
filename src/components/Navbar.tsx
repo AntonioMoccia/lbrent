@@ -21,7 +21,7 @@ function Navbar() {
         <div className=" absolute lg:relative flex justify-between bg-white z-50 h-20 w-[90%] lg:max-w-[50vw]  items-center ">
           <div className=" w-auto">
             <Link href={"/"}>
-              <Image src={Logo} alt="Alt logo" width={100} height={68} />
+              <Image src={Logo} alt="Alt logo" width={120} height={68} />
             </Link>
           </div>
           <div

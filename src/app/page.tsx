@@ -15,31 +15,27 @@ export default async function Home() {
     return page.data.slices.filter((slice) => slice.slice_type === type)[0];
   }
   return (
-<>
-      <section>
-          <Hero 
-          reverse
-          fullScreen={true}
-          image={page.data.image}
-            h1={page.data.spot_titolo} 
-            p={
-              page.data.spot_subtitle
-            }
-          />
+    <>
+      <Hero
+        reverse
+        fullScreen={true}
+        image={page.data.image}
+        h1={page.data.spot_titolo}
+        p={page.data.spot_subtitle}
+        homePageAnimation
+      />
 
-      </section>
       <ChiSiamo
         data={filterSliceByType("chi_siamo") as Content.ChiSiamoSlice}
-        />
+      />
       {/** SLIDER */}
       <div className=" w-full flex justify-center items-center bg-black">
         <div className=" max-w-md lg:max-w-4xl ">
           <Slider data={filterSliceByType("gallery") as Content.GallerySlice} />
         </div>
       </div>
-        <Map />
-
-        </>
+      <Map />
+    </>
   );
 }
 /*
