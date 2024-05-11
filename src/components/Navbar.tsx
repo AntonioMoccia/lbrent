@@ -26,14 +26,14 @@ function Navbar() {
           </div>
           <div
             onClick={handleButtonClick}
-            className=" cursor-pointer lg:hidden flex  justify-center text-xs items-center  h-full rounded-lg text-black"
+            className=" cursor-pointer lg:hidden flex font-bold justify-center text-xs items-center  h-full rounded-lg text-black"
           >
-            Menù
+            menù
           </div>
         </div>
         <div
           className={clsx(
-            "nav-links duration-300 z-50  lg:top-0 absolute lg:relative py-5 lg:py-0 bg-white lg:min-h-fit left-0 lg:w-1/2 w-full flex justify-center items-center px-5",
+            "nav-links duration-300 z-40  lg:top-0 absolute lg:relative py-5 lg:py-0 bg-white lg:min-h-fit left-0 lg:w-1/2 w-full flex justify-center items-center px-5",
             open ? "top-20" : "top-[-100%] "
           )}
         >

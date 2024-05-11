@@ -29,7 +29,7 @@ function ChiSiamo({ data }: { data: Content.ChiSiamoSlice }) {
           <span className=" text-xs ">Auto a disposizione</span>
         </div>
 
-        <div className="h-full w-[2px] bg-white" />
+        <div className="h-[3rem] w-[2px] bg-white" />
         {/**DIVIDER */}
         <div className=" text-2xl items-center flex flex-col">
           +300
