@@ -29,76 +29,85 @@ function Hero({
   useEffect(() => {
     if (!homePageAnimation) return;
 
-    const text = new SplitType("#home-title", {
+    const subtitle = new SplitType("#home-subtitle > p", {
       wordClass: "title-word",
       lineClass: "title-line",
     });
+
     const scrollDown = new SplitType("#scroll-down", {
       wordClass: "title-word",
       lineClass: "title-line",
     });
     const timeline = gsap.timeline();
     timeline
-      .to("#home-title .title-word > div", {
-        y: 0,
-        stagger: 0.01,
+      .to("#home-subtitle .title-word > div", {
+        stagger: 0.03,
+        alpha: 1,
+        delay: 0.5,
       })
       .fromTo(
-        "img",
+        "#home-image",
         {
           alpha: 0,
         },
         {
           alpha: 1,
-        },
-        "=-0.5"
-      ).to('#scroll-down  .title-word > div',{
-        stagger:0.03,
-        alpha:1
+        }
+      )
+
+      .to("#scroll-down-icon", {
+        alpha: 1,
+      })
+      .to("#scroll-down  .title-word > div", {
+        stagger: 0.03,
+        alpha: 1,
       });
   }, []);
 
   return (
     <>
-  
       <section
         className={clsx(
           ` 
-        bg-black justify-start flex flex-col items-center overflow-hidden lg:pt-10
+        bg-black justify-start flex flex-col items-center lg:pt-10
             rounded-t-3xl text-white `,
-          fullScreen ? `min-h-[calc(100vh-5rem)]` : `h-1/2`,
+          fullScreen ? `min-h-[calc(48rem)] h-[calc(100vh-10rem)]` : `h-1/2`,
           reverse
-            ? ` flex-col-reverse justify-center lg:justify-start  gap-10 lg:flex-col`
+            ? ` flex-col-reverse justify-center lg:justify-start gap-10 lg:flex-col`
             : `flex-col`
         )}
       >
         <div className=" relative lg:w-[45vw] w-full max-h-[calc(50vh-5rem)] lg:min-h-0  min-h-[350px]  lg:max-h-screen ">
           <Image
             alt={image.alt!}
+            id="home-image"
             className=" w-full max-w-screen-lg rounded-t-3xl "
             src={image.url as string}
             height={image.dimensions?.height}
             width={image.dimensions?.width}
           />
         </div>
-        <div className=" mt-0 lg:mt-5">
+        <div className=" relative mt-0 lg:mt-5">
           <div
             id={homePageAnimation ? "home-title" : "title"}
-            className=" text-[#B11000]  lg:max-h-screen font-extrabold text-2xl max-h-[calc(50vh-5rem)] text-center  max-w-screen-sm w-full leading-[-1%]"
+            className=" text-[#B11000]  lg:max-h-screen font-extrabold text-2xl min-h-40 max-h-[calc(50vh-5rem)] text-center  max-w-screen-sm w-full leading-[-1%]"
           >
             <PrismicRichText field={h1} />
           </div>
 
-          <div className=" text-center font-medium py-2 tracking-wide">
+          <div
+            id={homePageAnimation ? "home-subtitle" : "subtitle"}
+            className=" text-center font-medium py-2 tracking-wide"
+          >
             <PrismicRichText field={p} />
           </div>
         </div>
         {homePageAnimation && (
-
-          <div className=" absolute bottom-12 flex flex-col gap-2 justify-center items-center ">
-
-            <SlMouse size={30} />
-            <span id={'scroll-down'} className=" text-white text-xs">scroll down</span>
+          <div className="  lg:relative lg:top-10 absolute bottom-12 flex flex-col gap-2 justify-center items-center ">
+            <SlMouse id="scroll-down-icon" size={30} />
+            <span id={"scroll-down"} className=" text-white text-xs">
+              scroll down
+            </span>
           </div>
         )}
       </section>
