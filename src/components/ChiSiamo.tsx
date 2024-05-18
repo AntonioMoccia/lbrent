@@ -24,17 +24,14 @@ function ChiSiamo({ data }: { data: Content.ChiSiamoSlice }) {
       </div>
       {/**LABELS */}
       <div className=" flex w-full justify-around max-w-screen-sm mt-10">
-        <div className=" text-2xl items-center flex flex-col">
-          +100
-          <span className=" text-xs ">Auto a disposizione</span>
+        <div className=" text-2xl items-center gap-2 flex flex-col">
+          <span className=" font-bold">
+          + 30
+          </span>
+          <span className=" text-sm">Auto in pronta consegna</span>
         </div>
 
-        <div className="h-[3rem] w-[2px] bg-white" />
-        {/**DIVIDER */}
-        <div className=" text-2xl items-center flex flex-col">
-          +300
-          <span className=" text-xs ">Auto noleggiate</span>
-        </div>
+     
       </div>
       
     </section>

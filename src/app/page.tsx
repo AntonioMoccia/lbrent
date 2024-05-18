@@ -17,20 +17,18 @@ export default async function Home() {
   return (
     <>
       <Hero
-        reverse
         fullScreen={true}
         image={page.data.image}
         h1={page.data.spot_titolo}
         p={page.data.spot_subtitle}
-        homePageAnimation
       />
 
       <ChiSiamo
         data={filterSliceByType("chi_siamo") as Content.ChiSiamoSlice}
       />
       {/** SLIDER */}
-      <div className=" w-full flex justify-center items-center bg-black">
-        <div className=" max-w-md lg:max-w-4xl ">
+      <div className=" w-full py-10 flex justify-center items-center bg-black">
+        <div className=" w-full">
           <Slider data={filterSliceByType("gallery") as Content.GallerySlice} />
         </div>
       </div>
