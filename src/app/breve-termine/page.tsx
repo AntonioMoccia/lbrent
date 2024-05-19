@@ -18,7 +18,7 @@ async function BreveTermine() {
         className={`bg-black justify-start flex flex-col items-center lg:pt-10
          rounded-t-3xl text-white h-1/2 `}
       >
-        <div className=" relative lg:w-[45vw] w-full max-h-[calc(50vh-5rem)] lg:min-h-0  min-h-[250px] lg:max-h-screen ">
+        <div className=" relative lg:w-[45vw] w-full max-h-[calc(50vh-5rem)] lg:min-h-0  min-h-[400px] lg:max-h-screen ">
           <Image
             alt={page.data.image.alt!}
             id="home-image"

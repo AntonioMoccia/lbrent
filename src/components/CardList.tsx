@@ -47,7 +47,6 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
         field: "segmento",
         value: [],
         validator: (item: any, filterValue: any[]) => {
-
           if (filterValue.length == 0) {
             return true;
           }
@@ -100,6 +99,24 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
       );
     }
   };
+  const segmenti = [
+    {
+      value: "utilitaria",
+      label: "Utilitaria",
+    },
+    {
+      value: "crossover",
+      label: "Crossover",
+    },
+    {
+      value: "suv",
+      label: "Suv",
+    },
+    {
+      value: "luxury car",
+      label: "Luxury car",
+    },
+  ];
 
   return (
     <>
@@ -116,9 +133,9 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
 
         <div className=" w-full flex flex-col items-center justify-center ">
           <fieldset className=" py-5 gap-3 hidden lg:flex ">
-            {uniqBy(Cards.items, "segmento").map((item) => {
+            {segmenti.map((item) => {
               return (
-                <div key={item.segmento} className="flex items-center gap-2">
+                <div key={item.value} className="flex items-center gap-2">
                   <input
                     className="  relative peer shrink-0
                     appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
@@ -127,15 +144,15 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                     onChange={segmentoChangeFilter}
                     data-field="segmento"
                     type="checkbox"
-                    id={item.segmento as string}
-                    value={item.segmento as string}
+                    id={item.value as string}
+                    value={item.value as string}
                   />
                   <label
                     className=" cursor-pointer"
-                    htmlFor={item.segmento as string}
+                    htmlFor={item.value as string}
                   >
                     {" "}
-                    {item.segmento}
+                    {item.label}
                   </label>
                   <svg
                     className="
@@ -156,147 +173,64 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                 </div>
               );
             })}
-
-            <div className="flex items-center gap-2">
-              <input
-                onChange={(e) => {
-                  handleFilterChange(e.target.name, (initalFieldValue: any) => {
-                    return (initalFieldValue = e.target.checked);
-                  });
-                }}
-                className="  relative peer shrink-0
-                appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
-                mt-1
-                checked:bg-black checked:border-0"
-                type="checkbox"
-                name="neopatentati"
-                id="neopatentati"
-              />
-              <label className=" cursor-pointer" htmlFor="neopatentati">
-                neopatentati
-              </label>
-              <svg
-                className="
-                absolute 
-                w-6 h-6 p-1
-                pointer-events-none
-                hidden peer-checked:block"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
           </fieldset>
 
-          <Accordion type="single" collapsible className=" block w-[60%] lg:hidden">
+          <Accordion
+            type="single"
+            collapsible
+            className=" block w-[60%] lg:hidden"
+          >
             <div className=" decoration-0">
-
-
-            <Item underline={false} label="Vedi Filtri" itemNumber={1}>
-              <fieldset className=" z-30 flex flex-col ml-10 gap-3 ">
-                {uniqBy(Cards.items, "segmento").map((item) => {
-                  return (
-                    <div
-                      key={item.segmento}
-                      className="flex items-center gap-2"
-                    >
-                      <input
-                        className="  relative peer shrink-0
-                    appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
-                    mt-1
-                   checked:bg-black checked:border-0"
-                        onChange={segmentoChangeFilter}
-                        data-field="segmento"
-                        type="checkbox"
-                        checked={filters
-                          .filter((filter: any) => {
-                            return filter.field == "segmento";
-                          })[0]
-                          .value.includes(item.segmento)}
-                        id={item.segmento as string}
-                        value={item.segmento as string}
-                      />
-                      <label
-                        className=" cursor-pointer"
-                        htmlFor={item.segmento as string}
-                      >
-                        {" "}
-                        {item.segmento}
-                      </label>
-                      <svg
-                        className="
+              <Item underline={false} label="Vedi Filtri" itemNumber={1}>
+                <fieldset className=" z-30 flex flex-col ml-10 gap-3 ">
+                  {segmenti.map((item) => {
+                    return (
+                      <div key={item.value} className="flex items-center gap-2">
+                        <input
+                          className="  relative peer shrink-0
+                          appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
+                          mt-1
+                          checked:bg-black checked:border-0"
+                          onChange={segmentoChangeFilter}
+                          data-field="segmento"
+                          type="checkbox"
+                          id={item.value as string}
+                          value={item.value as string}
+                          checked={
+                            filters.filter((filter: any) => {
+                              return filter.field == "segmento" && filter.field == "segmento" && filter.value.includes(item.value)
+                            }).length > 0
+                          }
+                        />
+                        <label
+                          className="peer-checked:block cursor-pointer"
+                          htmlFor={item.value as string}
+                        >
+                          {" "}
+                          {item.label}
+                        </label>
+                        <svg
+                          className="
                       absolute 
                       w-6 h-6 p-1
                       pointer-events-none
                       hidden peer-checked:block"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="white"
-                        stroke-width="4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </div>
-                  );
-                })}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="white"
+                          stroke-width="4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                    );
+                  })}
 
-                <div className="flex items-center gap-2">
-                  <input
-
-                    onChange={(e) => {
-                      handleFilterChange(
-                        e.target.name,
-                        (initalFieldValue: any) => {
-                          return (initalFieldValue = e.target.checked);
-                        }
-                      );
-                    }}
-                    checked={filters
-                      .filter((filter: any) => {
-                        return filter.field == "neopatentati";
-                      })[0].value}
-                    className="  relative peer shrink-0
-                appearance-none w-6 h-6 border-2 border-black rounded-sm bg-white
-                mt-1
-                checked:bg-black checked:border-0"
-                    type="checkbox"
-                    name="neopatentati"
-                    id="neopatentati"
-                  />
-                  <label
-                    className="peer-checked:block cursor-pointer"
-                    htmlFor="neopatentati"
-                  >
-                    neopatentati
-                  </label>
-                  <svg
-                    className="
-                absolute 
-                w-6 h-6 p-1
-                pointer-events-none
-                hidden peer-checked:block"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-              </fieldset>
-            </Item>
+                </fieldset>
+              </Item>
             </div>
           </Accordion>
         </div>

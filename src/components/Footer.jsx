@@ -10,7 +10,7 @@ function Footer() {
     return (
         <footer className=' h-[150px] max-h-[200px] pt-5 lg:flex lg:flex-col lg:justify-center lg:items-center'>
             <div className=' h-1/2 lg:w-[80%] flex justify-between items-center px-4 '>
-                <div className=' w-16'>
+                <div className=' w-20'>
                     <Link href={'/'}>
                         <Image src={Logo} alt='Alt logo' width={100} height={68} />
                     </Link>

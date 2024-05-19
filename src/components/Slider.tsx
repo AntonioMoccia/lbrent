@@ -54,7 +54,7 @@ export function SlidePrevButton() {
 
 function Slider({ data }: { data: Partial<Content.GallerySlice> }) {
   return (
-    <div id={"home-slider"} className="w-screen lg:max-w-[60vw] max-w-[600px] min-h-[300px] h-[45vh]">
+    <div id={"home-slider"} className="w-screen lg:max-w-[60vw] max-w-[600px] min-h-[350px] h-[45vh]">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}

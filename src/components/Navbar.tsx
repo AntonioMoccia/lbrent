@@ -33,7 +33,7 @@ function Navbar() {
         </div>
         <div
           className={clsx(
-            "nav-links duration-300 z-40  lg:top-0 absolute lg:relative py-5 lg:py-0 bg-white lg:min-h-fit left-0 lg:w-1/2 w-full flex justify-center items-center px-5",
+            "nav-links duration-300 z-40  lg:top-0 absolute lg:relative py-5 lg:py-0 bg-white lg:min-h-fit left-0 lg:w-[85%] w-full flex justify-center items-center px-5",
             open ? "top-20" : "top-[-100%] "
           )}
         >
@@ -56,7 +56,9 @@ function Navbar() {
             ))}
           </ul>
         </div>
-        <div className=" lg:flex lg:gap-2 hidden ">
+        
+        <div className=" lg:flex lg:gap-4 text-nowrap hidden ">
+          <span className=" text-xs">seguici su </span>
           <a target="__blank" href="https://www.instagram.com/lb_rent_/">
             <FaInstagram className="text-xl bg-transparent text-black" />
           </a>
