@@ -54,19 +54,19 @@ export function SlidePrevButton() {
 
 function Slider({ data }: { data: Partial<Content.GallerySlice> }) {
   return (
-    <div id={"home-slider"} className="w-screen lg:max-w-[40vw] h-[40vh]">
+    <div id={"home-slider"} className="w-screen lg:max-w-[60vw] max-w-[600px] min-h-[300px] h-[45vh]">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
-        className=" h-full"
+        className=" h-full "
         /*   
         onSwiper={(swiper) => console.log(swiper)} */
       >
         {data?.items?.map((slide, i) => {
           return (
-            <SwiperSlide className="w-full h-full" key={slide.gallery_image.id}>
-              <div className=" h-[60%] w-[60%] lg:h-[100%] overflow-hidden relative rounded-3xl">
+            <SwiperSlide className="w-full  h-full" key={slide.gallery_image.id}>
+              <div className=" lg:w-[60%] lg:h-[100%] w-[60%] h-[50%] md:w-[60%] md:h-[80%] overflow-hidden relative rounded-3xl">
                 <Image
                   fill
                   objectFit="cover"

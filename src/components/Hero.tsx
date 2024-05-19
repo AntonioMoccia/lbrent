@@ -56,14 +56,14 @@ function Hero({ image, h1, p, fullScreen = true }: HeroProps) {
   return (
     <>
       <section
-        className={` py-6 rounded-t-3xl gap-5 bg-black flex items-center text-white h-[calc(100vh-5rem)] min-h-[600px] justify-around lg:justify-start flex-col`}
+        className={` py-6 rounded-t-3xl gap-5 bg-black flex items-center text-white h-[calc(100vh-5rem)] max-h-[calc(100vh-5rem)] min-h-[600px] justify-around lg:justify-start flex-col`}
       >
         <div className="flex max-h-full items-center flex-col-reverse justify-center lg:justify-start gap-10 lg:flex-col">
           <div className=" w-full flex justify-center items-center ">
             <Image
               alt={image.alt!}
               id="home-image"
-              className="rounded-t-3xl max-h-[80vh] w-full md:w-3/4"
+              className="rounded-t-3xl max-h-[65vh] w-full md:w-3/4"
               src={image.url as string}
               height={image.dimensions?.height}
               width={image.dimensions?.width}

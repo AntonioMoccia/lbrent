@@ -28,7 +28,7 @@ export default async function Home() {
       />
       {/** SLIDER */}
       <div className=" w-full py-10 flex justify-center items-center bg-black">
-        <div className=" w-full">
+        <div className=" w-full flex justify-center items-center ">
           <Slider data={filterSliceByType("gallery") as Content.GallerySlice} />
         </div>
       </div>
