@@ -84,7 +84,7 @@ function WhatsAppWidget() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className="fixed !z-[2147483647] bottom-4 right-4">
       {open && (
         <div id="wa-widget">
           <div className=" rounded-xl overflow-hidden absolute right-4 bottom-20 h-72 w-64  bg-[#ece5dd]">
@@ -112,8 +112,9 @@ function WhatsAppWidget() {
                   if (text == "") {
                     return;
                   }
+                
                   window.open(
-                    `https://wa.me/+393314487994?text=${text}`,
+                    `https://wa.me/+393452966189?text=${text}`,
                     "__blank"
                   );
                   setText("");
@@ -145,7 +146,7 @@ function WhatsAppWidget() {
         </div>
       )}
       <div
-        className=" cursor-pointer text-2xl flex justify-center items-center w-12 h-12 lg:h-18 lg:w-18 p-3 rounded-full absolute bottom-0 right-0 text-white bg-green-900"
+        className="  cursor-pointer text-2xl flex justify-center items-center w-10 h-10 lg:h-18 lg:w-18 p-3 rounded-full absolute bottom-0 right-0 text-white bg-green-900"
         onClick={() => setOpen(!open)}
       >
         <FaWhatsapp />

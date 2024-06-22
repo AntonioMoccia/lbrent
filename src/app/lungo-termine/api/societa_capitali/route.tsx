@@ -2,7 +2,7 @@ import { EmailTemplate } from "@/components/EmailTemplate";
 import { Resend } from "resend";
 
 import { toBuffer } from "@/lib/toBuffer";
-const resend = new Resend("re_M7y7FAJX_PwAdwnATbJLKhHNFUJUN4S7M");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 
 export async function POST(request: Request) {
