@@ -30,7 +30,7 @@ iscrizione_albo
   try {
     const data = await resend.emails.send({
       from: "Libero professionista <onboarding@resend.dev>",
-      to: ["moccia.ant@gmail.com"],
+      to: ["info@autonoleggiolbrent.it"],
       subject: "Richiesta lungo termine - Libero professionista",
       react: <EmailTemplate phonenumber={phonenumber as string} email={email as string} tipologia={'libero professionista'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
       attachments: [

@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   try {
     const data = await resend.emails.send({
       from: "Ditta individuale <onboarding@resend.dev>",
-      to: ["moccia.ant@gmail.com"],
+      to: ["info@autonoleggiolbrent.it"],
       subject: "Richiesta lungo termine - Ditta individuale",
       react: (
         <EmailTemplate

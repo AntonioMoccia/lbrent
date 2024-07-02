@@ -40,7 +40,7 @@ ultimo_modello_unico_socio_accomodatario
   try {
     const data = await resend.emails.send({
       from: "Societa persone <onboarding@resend.dev>",
-      to: ["moccia.ant@gmail.com"],
+      to: ["info@autonoleggiolbrent.it"],
       subject: "Richiesta lungo termine - Societa persone",
       react: (
         <EmailTemplate

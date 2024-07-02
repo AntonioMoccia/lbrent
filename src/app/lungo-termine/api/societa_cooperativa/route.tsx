@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   try {
     const data = await resend.emails.send({
       from: "Societa cooperativa <onboarding@resend.dev>",
-      to: ["moccia.ant@gmail.com"],
+      to: ["info@autonoleggiolbrent.it"],
       subject: "Richiesta lungo termine - Societa cooperativa",
       react: <EmailTemplate email={email as string} phonenumber={phonenumber as string} tipologia={'societa cooperativa'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
       attachments: [
