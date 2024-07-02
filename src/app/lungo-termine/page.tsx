@@ -5,8 +5,7 @@ import PersoneFisicheDipendentiForm from "@/components/Forms/PersoneFisicheDipen
 import SocietaCapitaliForm from "@/components/Forms/SocietaCapitaliForm";
 import SocietaCooperativaForm from "@/components/Forms/SocietaCooperativaForm";
 import SocietaPersoneForm from "@/components/Forms/SocietaPersoneForm";
-import Hero from "@/components/Hero";
-
+import {Metadata} from 'next'
 import {
   Accordion,
   Item,
@@ -18,7 +17,10 @@ import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
 import React from "react";
-
+export const metadata: Metadata = {
+  title: "LB Rent - lungo termine",
+  description: "Scopri i vantaggi del noleggio a lungo termine e goditi l'esperienza di avere un'auto sempre a tua disposizione, abbattendo i costi legati all'acquisto, alla proprietà e alla manutenzione. Con il noleggio a lungo termine, potrai beneficiare di un canone mensile fisso concordato e scegliere il modello di auto che preferisci tra una vasta gamma di opzioni sul mercato",
+};
 const AccordionItems = [
   {
     label: "Ditta individuale",

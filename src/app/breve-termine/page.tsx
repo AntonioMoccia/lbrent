@@ -4,6 +4,12 @@ import CardList from "@/components/CardList";
 import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "LB Rent - breve termine",
+  description: "Scopri la libertà di viaggiare con il nostro noleggio a breve termine! Con tariffe competitive e una vasta gamma di veicoli moderni e affidabili, puoi noleggiare la tua auto ideale per brevi periodi senza complicazioni. Scegli la comodità e la flessibilità del noleggio a breve termine e rendi ogni viaggio un'esperienza indimenticabile.",
+};
 
 async function BreveTermine() {
   const client = createClient();
