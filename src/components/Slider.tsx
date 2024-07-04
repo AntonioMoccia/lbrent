@@ -68,6 +68,8 @@ function Slider({ data }: { data: Partial<Content.GallerySlice> }) {
             <SwiperSlide className="w-full  h-full" key={slide.gallery_image.id}>
               <div className=" lg:w-[60%] lg:h-[100%] w-[60%] h-[50%] md:w-[60%] md:h-[80%] overflow-hidden relative rounded-3xl">
                 <Image
+                priority={true}
+                quality={7}
                   fill
                   objectFit="cover"
                   objectPosition="center"

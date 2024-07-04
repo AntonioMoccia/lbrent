@@ -88,7 +88,7 @@ function Hero({ image, h1, p, fullScreen = true }: HeroProps) {
           </div>
         </div>
         {/**SCROLL DOWN */}
-        <div className=" relative bottom-4">
+        <div className=" relative md:bottom-2 bottom-12">
           <div className=" flex flex-col gap-2 pt-2 justify-center items-center ">
             <SlMouse id="scroll-down-icon" size={30} />
             <span id={"scroll-down"} className=" text-white text-xs">
