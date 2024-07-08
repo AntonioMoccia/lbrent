@@ -10,11 +10,15 @@ import { useToast } from "../toast/use-toast";
 import { onChangeFileUpload } from "@/lib/onChageFileUpload";
 import { UploadValidator } from "@/lib/uploadValidator";
 import { LuLoader2 } from "react-icons/lu";
+import DettaglioNoleggio from "./DettaglioNoleggio";
 
 function PersoneFisicheDipendentiForm() {
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
+  const form =useForm({
+    mode: "onChange",
+  });
   const {
     register,
     handleSubmit,
@@ -23,9 +27,8 @@ function PersoneFisicheDipendentiForm() {
     trigger,
     control,
     getValues,
-  } = useForm({
-    mode: "onChange",
-  });
+  } = form
+  
 
   const watcher = useWatch({ control });
 
@@ -158,6 +161,7 @@ function PersoneFisicheDipendentiForm() {
               inputProps={register("iban")}
             />
           </div>
+          <DettaglioNoleggio form={form} />
           <label
             htmlFor="submitButton"
             className="  mt-10 w-full flex justify-center items-center"
@@ -170,6 +174,7 @@ function PersoneFisicheDipendentiForm() {
               )}
               Invia
             </div>
+
           </label>
           <input
             id="submitButton"

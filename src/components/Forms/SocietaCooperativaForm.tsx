@@ -9,11 +9,15 @@ import { FaCheckCircle } from "react-icons/fa";
 import { UploadValidator } from "@/lib/uploadValidator";
 import { onChangeFileUpload } from "@/lib/onChageFileUpload";
 import { LuLoader2 } from "react-icons/lu";
+import DettaglioNoleggio from "./DettaglioNoleggio";
 
 function SocietaCooperativaForm() {
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
+  const form = useForm({
+    mode: "onChange",
+  });
   const {
     register,
     handleSubmit,
@@ -22,9 +26,7 @@ function SocietaCooperativaForm() {
     trigger,
     control,
     getValues,
-  } = useForm({
-    mode: "onChange",
-  });
+  } = form;
 
   const watcher = useWatch({ control });
 
@@ -159,6 +161,7 @@ function SocietaCooperativaForm() {
               inputProps={register("iban")}
             />
           </div>
+          <DettaglioNoleggio form={form} />
           <label
             htmlFor="submitButton"
             className="  mt-10 w-full flex justify-center items-center"

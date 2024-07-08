@@ -1,17 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { TextField, UploadFile } from "./Fields";
+import { OptionField, SelectField, TextAreaField, TextField, UploadFile } from "./Fields";
 import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
 import { useToast } from "../toast/use-toast";
 import { UploadValidator } from "@/lib/uploadValidator";
 import { onChangeFileUpload } from "@/lib/onChageFileUpload";
 import { LuLoader2 } from "react-icons/lu";
+import DettaglioNoleggio from "./DettaglioNoleggio";
 
 function LiberoProfessionistaForm() {
   const [loading, setLoading] = useState(false);
-
+  const form = useForm({
+    mode: "onChange",
+  });
   const { toast } = useToast();
   const {
     register,
@@ -21,9 +24,7 @@ function LiberoProfessionistaForm() {
     trigger,
     control,
     getValues,
-  } = useForm({
-    mode: "onChange",
-  });
+  } = form
 
   const watcher = useWatch({ control });
 
@@ -167,6 +168,7 @@ function LiberoProfessionistaForm() {
               inputProps={register("iban")}
             />
           </div>
+          <DettaglioNoleggio form={form} />
           <label
             htmlFor="submitButton"
             className="  mt-10 w-full flex justify-center items-center"

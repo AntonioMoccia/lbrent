@@ -9,11 +9,15 @@ import { useToast } from "../toast/use-toast";
 import { LuLoader2 } from "react-icons/lu";
 import { UploadValidator } from "@/lib/uploadValidator";
 import { onChangeFileUpload } from "@/lib/onChageFileUpload";
+import DettaglioNoleggio from "./DettaglioNoleggio";
 
 function SocietaPersoneForm() {
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
+  const form = useForm({
+    mode: "onChange",
+  });
   const {
     register,
     handleSubmit,
@@ -22,9 +26,7 @@ function SocietaPersoneForm() {
     trigger,
     control,
     getValues,
-  } = useForm({
-    mode: "onChange",
-  });
+  } = form
 
   const watcher = useWatch({ control });
 
@@ -186,6 +188,7 @@ function SocietaPersoneForm() {
               inputProps={register("cognome")}
             /> */}
           </div>
+          <DettaglioNoleggio form={form} />
           <label
             htmlFor="submitButton"
             className="  mt-10 w-full flex justify-center items-center"

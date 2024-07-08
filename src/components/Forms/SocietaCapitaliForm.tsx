@@ -9,11 +9,15 @@ import { useToast } from "../toast/use-toast";
 import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
 import { LuLoader2 } from "react-icons/lu";
+import DettaglioNoleggio from "./DettaglioNoleggio";
 
 function SocietaCapitaliForm() {
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
+  const form = useForm({
+    mode: "onChange",
+  });
   const {
     register,
     handleSubmit,
@@ -22,9 +26,7 @@ function SocietaCapitaliForm() {
     trigger,
     control,
     getValues,
-  } = useForm({
-    mode: "onChange",
-  });
+  } = form
 
   const watcher = useWatch({ control });
 
@@ -158,6 +160,7 @@ function SocietaCapitaliForm() {
               inputProps={register("iban")}
             />
           </div>
+          <DettaglioNoleggio form={form} />
           <label
             htmlFor="submitButton"
             className="  mt-10 w-full flex justify-center items-center"

@@ -5,8 +5,8 @@ interface EmailTemplateProps {
   nome: string;
   cognome: string;
   iban: string;
-  phonenumber:string
-  email:string
+  phonenumber: string;
+  email: string;
 }
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
@@ -15,7 +15,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   cognome,
   iban,
   phonenumber,
-  email
+  email,
 }) => (
   <div>
     <h1>Richiesta lungo termine, da {tipologia}!</h1>

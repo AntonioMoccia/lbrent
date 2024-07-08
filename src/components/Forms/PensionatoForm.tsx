@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useForm,  useWatch } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { TextField, UploadFile } from "./Fields";
 import { onChangeFileUpload } from "@/lib/onChageFileUpload";
 import { FaCheckCircle } from "react-icons/fa";
@@ -8,11 +8,15 @@ import axios from "axios";
 import { UploadValidator } from "@/lib/uploadValidator";
 import { useToast } from "../toast/use-toast";
 import { LuLoader2 } from "react-icons/lu";
+import DettaglioNoleggio from "./DettaglioNoleggio";
 
 function PensionatoForm() {
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
+  const form = useForm({
+    mode: "onChange",
+  });
   const {
     register,
     handleSubmit,
@@ -21,9 +25,7 @@ function PensionatoForm() {
     trigger,
     control,
     getValues,
-  } = useForm({
-    mode: "onChange",
-  });
+  } = form;
 
   const watcher = useWatch({ control });
 
@@ -38,24 +40,22 @@ function PensionatoForm() {
       }
     });
     setLoading(true);
-    axios
-      .post("/lungo-termine/api/pensionato", formData)
-      .then((res) => {
-        if (res.status == 200) {
-          toast({
-            description: (
-              <div className=" flex items-center gap-2">
-                <FaCheckCircle className=" text-green-500" size={30} />{" "}
-                Richiesta inoltrata, verrai ricontattato al più presto!
-              </div>
-            ),
-          });
-          setLoading(false);
-          reset();
-        } else {
-          alert("error");
-        }
-      });
+    axios.post("/lungo-termine/api/pensionato", formData).then((res) => {
+      if (res.status == 200) {
+        toast({
+          description: (
+            <div className=" flex items-center gap-2">
+              <FaCheckCircle className=" text-green-500" size={30} /> Richiesta
+              inoltrata, verrai ricontattato al più presto!
+            </div>
+          ),
+        });
+        setLoading(false);
+        reset();
+      } else {
+        alert("error");
+      }
+    });
   };
 
   return (
@@ -66,7 +66,7 @@ function PensionatoForm() {
             <UploadFile
               testo="Documento di identità"
               error={errors.documento_identita?.message as string}
-              value={watcher['documento_identita']}
+              value={watcher["documento_identita"]}
               inputProps={register("documento_identita", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
@@ -77,7 +77,7 @@ function PensionatoForm() {
             <UploadFile
               testo="Tesserino codice fiscale"
               error={errors.tesserino_codice_fiscale?.message as string}
-              value={watcher['tesserino_codice_fiscale']}
+              value={watcher["tesserino_codice_fiscale"]}
               inputProps={register("tesserino_codice_fiscale", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
@@ -88,7 +88,7 @@ function PensionatoForm() {
             <UploadFile
               testo="Cedolino pensione / Mod.730 / CUD"
               error={errors.cedolino_pensione_730_cud?.message as string}
-              value={watcher['cedolino_pensione_730_cud']}
+              value={watcher["cedolino_pensione_730_cud"]}
               inputProps={register("cedolino_pensione_730_cud", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
@@ -105,14 +105,14 @@ function PensionatoForm() {
               type="text"
               placeholder="Nome"
               error={errors.nome?.message as string}
-              value={watcher['nome']}
+              value={watcher["nome"]}
               inputProps={register("nome")}
             />
-              <TextField
+            <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
-              value={watcher['cognome']}
+              value={watcher["cognome"]}
               inputProps={register("cognome")}
             />
             <TextField
@@ -129,11 +129,11 @@ function PensionatoForm() {
               })}
             />
             <TextField
-              type='number'
+              type="number"
               placeholder="Telefono"
               error={errors.phonenumber?.message as string}
               value={watcher["phonenumber"]}
-              inputProps={register("phonenumber",{
+              inputProps={register("phonenumber", {
                 required: "Campo obbligatorio",
               })}
             />
@@ -141,11 +141,11 @@ function PensionatoForm() {
               type="text"
               placeholder="Iban"
               error={errors.iban?.message as string}
-              value={watcher['iban']}
+              value={watcher["iban"]}
               inputProps={register("iban")}
             />
-
           </div>
+          <DettaglioNoleggio form={form} />
           <label
             htmlFor="submitButton"
             className="  mt-10 w-full flex justify-center items-center"

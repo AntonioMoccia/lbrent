@@ -1,18 +1,30 @@
 "use client";
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { TextField, UploadFile } from "./Fields";
+import {
+  TextField,
+  UploadFile,
+  SelectField,
+  OptionField,
+  TextAreaField,
+} from "./Fields";
 import axios from "axios";
 import { useToast } from "../toast/use-toast";
 
 import { FaCheckCircle } from "react-icons/fa";
 import { LuLoader2 } from "react-icons/lu";
+import DettaglioNoleggio from "./DettaglioNoleggio";
 
 function DittaIndividualeForm() {
   const [loading, setLoading] = useState(false);
 
   const ACCEPTED_FILE_TYPE = ["application/pdf"];
   const { toast } = useToast();
+
+  const form = useForm({
+    mode: "onChange",
+  });
+
   const {
     register,
     handleSubmit,
@@ -21,9 +33,7 @@ function DittaIndividualeForm() {
     trigger,
     control,
     getValues,
-  } = useForm({
-    mode: "onChange",
-  });
+  } = form;
 
   const watcher = useWatch({ control });
   const MAX_FILE_SIZE_MB = 5; // Imposta la dimensione massima del file consentita in MB
@@ -151,7 +161,7 @@ function DittaIndividualeForm() {
             />
           </div>
 
-          <h1 className="w-full px-5 font-bold mt-5">Compila il form</h1>
+          <h1 className="w-full px-5 font-bold mt-5">Dati personali</h1>
 
           <div className=" w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
             <TextField
@@ -183,11 +193,11 @@ function DittaIndividualeForm() {
               })}
             />
             <TextField
-              type='number'
+              type="number"
               placeholder="Telefono"
               error={errors.phonenumber?.message as string}
               value={watcher["phonenumber"]}
-              inputProps={register("phonenumber",{
+              inputProps={register("phonenumber", {
                 required: "Campo obbligatorio",
               })}
             />
@@ -199,6 +209,7 @@ function DittaIndividualeForm() {
               inputProps={register("iban")}
             />
           </div>
+          <DettaglioNoleggio form={form} />
           <label
             htmlFor="submitButton"
             className="  mt-10 w-full flex justify-center items-center"
