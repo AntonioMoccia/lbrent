@@ -30,8 +30,8 @@ function SelectField(props: SelectFieldProps) {
         </SelectTrigger>
         <SelectContent>
             {
-                optionValues.map(({value,label})=>(
-                    <SelectItem value={value}>{label}</SelectItem>                    
+                optionValues.map(({value,label},index)=>(
+                    <SelectItem key={index} value={value}>{label}</SelectItem>                    
                 ))
             }
         </SelectContent>
