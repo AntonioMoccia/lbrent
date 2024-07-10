@@ -10,22 +10,36 @@ export async function POST(request: Request) {
   const documento_identita = await toBuffer(
     formData.get("documento_identita") as File
   );
+
   const tesserino_codice_fiscale = await toBuffer(
     formData.get("tesserino_codice_fiscale") as File
   );
+
   const visura_camerale = await toBuffer(
     formData.get("visura_camerale") as File
   );
+
   const ultimo_modello_unico = await toBuffer(
     formData.get("ultimo_modello_unico") as File
   );
+
   const quadro_iq = await toBuffer(formData.get("quadro_iq") as File);
+
 
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
   const phonenumber = formData.get("phonenumber");
   const email = formData.get("email");
+
+  const cliente = formData.get("cliente");
+  const marca_modello_auto = formData.get("marca_modello_auto");
+  const optional = formData.get("optional");
+  const note = formData.get("note");
+  const carburante = formData.get("carburante");
+  const cambio = formData.get("cambio");
+  const durata = formData.get("durata");
+  const chilometri_annui = formData.get("chilometri_annui");
 
   try {
     const data = await resend.emails.send({
@@ -40,6 +54,15 @@ export async function POST(request: Request) {
           iban={iban as string}
           phonenumber={phonenumber as string}
           email={email as string}
+
+          cliente={cliente as string}
+          marca_modello_auto={marca_modello_auto as string}
+          optional={optional as string}
+          note={note as string}
+          carburante={carburante as string}
+          cambio={cambio as string}
+          durata={durata as string}
+          chilometri_annui={chilometri_annui as string}
         />
       ),
       attachments: [
@@ -66,9 +89,8 @@ export async function POST(request: Request) {
       ],
     });
 
-    return Response.json(data);
+    return Response.json("data");
   } catch (error) {
-
     return Response.json({ error });
   }
 }

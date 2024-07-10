@@ -6,24 +6,56 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 //documento_identita
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const documento_identita_firmatario = await toBuffer(formData.get("documento_identita_firmatario") as File);
-  const tesserino_codice_fiscale_firmatario = await toBuffer(formData.get("tesserino_codice_fiscale_firmatario") as File);
-  const visura_camerale = await toBuffer(formData.get("visura_camerale") as File);
-  const ultimo_modello_unico = await toBuffer(formData.get("ultimo_modello_unico") as File);
- 
+  const documento_identita_firmatario = await toBuffer(
+    formData.get("documento_identita_firmatario") as File
+  );
+  const tesserino_codice_fiscale_firmatario = await toBuffer(
+    formData.get("tesserino_codice_fiscale_firmatario") as File
+  );
+  const visura_camerale = await toBuffer(
+    formData.get("visura_camerale") as File
+  );
+  const ultimo_modello_unico = await toBuffer(
+    formData.get("ultimo_modello_unico") as File
+  );
 
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
   const phonenumber = formData.get("phonenumber");
   const email = formData.get("email");
+  const cliente = formData.get("cliente");
+  const marca_modello_auto = formData.get("marca_modello_auto");
+  const optional = formData.get("optional");
+  const note = formData.get("note");
+  const carburante = formData.get("carburante");
+  const cambio = formData.get("cambio");
+  const durata = formData.get("durata");
+  const chilometri_annui = formData.get("chilometri_annui");
 
   try {
     const data = await resend.emails.send({
       from: "Societa cooperativa <onboarding@resend.dev>",
       to: ["info@autonoleggiolbrent.it"],
       subject: "Richiesta lungo termine - Societa cooperativa",
-      react: <EmailTemplate email={email as string} phonenumber={phonenumber as string} tipologia={'societa cooperativa'} nome={nome as string} cognome={cognome as string} iban={iban as string} />,
+      react: (
+        <EmailTemplate
+          email={email as string}
+          phonenumber={phonenumber as string}
+          tipologia={"societa cooperativa"}
+          nome={nome as string}
+          cognome={cognome as string}
+          iban={iban as string}
+          cliente={cliente as string}
+          marca_modello_auto={marca_modello_auto as string}
+          optional={optional as string}
+          note={note as string}
+          carburante={carburante as string}
+          cambio={cambio as string}
+          durata={durata as string}
+          chilometri_annui={chilometri_annui as string}
+        />
+      ),
       attachments: [
         {
           filename: documento_identita_firmatario.fileName,
@@ -40,14 +72,12 @@ export async function POST(request: Request) {
         {
           filename: ultimo_modello_unico.fileName,
           content: ultimo_modello_unico.bufferFile,
-        }
+        },
       ],
     });
-    
+
     return Response.json(data);
-    
   } catch (error) {
-    
     return Response.json({ error });
   }
 }

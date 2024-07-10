@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import {
   TextField,
@@ -22,7 +22,7 @@ function DittaIndividualeForm() {
   const { toast } = useToast();
 
   const form = useForm({
-    mode: "onChange",
+    mode: "onChange"
   });
 
   const {
@@ -36,6 +36,8 @@ function DittaIndividualeForm() {
   } = form;
 
   const watcher = useWatch({ control });
+
+  
   const MAX_FILE_SIZE_MB = 5; // Imposta la dimensione massima del file consentita in MB
 
   const UploadValidator = (targetValue: FileList, fields: any) => {
@@ -60,7 +62,7 @@ function DittaIndividualeForm() {
     }
   };
   const onChangeFileUpload = (e: any) => {
-    const formValues = getValues();
+    const formValues : any = getValues();
     const targetName = e.currentTarget.name;
     const triggers = Object.keys(formValues).filter(
       (key) =>

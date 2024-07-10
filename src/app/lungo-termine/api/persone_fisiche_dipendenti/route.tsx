@@ -22,6 +22,16 @@ export async function POST(request: Request) {
   const iban = formData.get("iban");
   const phonenumber = formData.get("phonenumber");
   const email = formData.get("email");
+
+  const cliente = formData.get("cliente");
+  const marca_modello_auto = formData.get("marca_modello_auto");
+  const optional = formData.get("optional");
+  const note = formData.get("note");
+  const carburante = formData.get("carburante");
+  const cambio = formData.get("cambio");
+  const durata = formData.get("durata");
+  const chilometri_annui = formData.get("chilometri_annui");
+
   try {
     const data = await resend.emails.send({
       from: "Persone fisiche dipendenti <onboarding@resend.dev>",
@@ -35,7 +45,15 @@ export async function POST(request: Request) {
           nome={nome as string}
           cognome={cognome as string}
           iban={iban as string}
-        />
+          cliente={cliente as string}
+          marca_modello_auto={marca_modello_auto as string}
+          optional={optional as string}
+          note={note as string}
+          carburante={carburante as string}
+          cambio={cambio as string}
+          durata={durata as string}
+          chilometri_annui={chilometri_annui as string}
+          />
       ),
       attachments: [
         {

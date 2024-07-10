@@ -85,10 +85,9 @@ function DettaglioNoleggio(props: DettaglioNoleggioProps) {
       </div>
       <div className=" w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
         <SelectField
-          error={errors.durata?.message as string}
-          value={watcher["durata"]}
+          name="durata"
           placeholder="Durata"
-          inputProps={register("durata")}
+          form={form}
           optionValues={[
             {
               value: "12",
@@ -113,10 +112,9 @@ function DettaglioNoleggio(props: DettaglioNoleggioProps) {
           ]}
         />
         <SelectField
-          error={errors.durata?.message as string}
-          value={watcher["durata"]}
+          name="chilometri_annui"
+          form={form}
           placeholder="KM (Annui)"
-          inputProps={register("durata")}
           optionValues={[
             {
               value: "5",

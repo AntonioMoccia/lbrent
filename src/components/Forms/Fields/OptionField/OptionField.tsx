@@ -33,6 +33,9 @@ function OptionField(props: OptionFieldProps) {
     <div className="p-2 px-4">
       <Form {...form}>
         <FormField
+        rules={{
+          required: "Campo obbligatorio",
+        }}
           control={form.control}
           name={name}
           render={({ field }) => (
@@ -43,7 +46,7 @@ function OptionField(props: OptionFieldProps) {
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
-                  defaultValue={field.value || defaultValue}
+                  defaultValue={field.value}
                   className={`flex flex-row space-y-1 flex-wrap ${classes}`}
                 >
                   {options.map(({ label, value }, index) => (
@@ -59,7 +62,7 @@ function OptionField(props: OptionFieldProps) {
                   ))}
                 </RadioGroup>
               </FormControl>
-              <FormMessage />
+            {/*   <FormMessage /> */}
             </FormItem>
           )}
         />
