@@ -18,8 +18,14 @@ export async function POST(request: Request) {
   const ultimo_modello_unico = await toBuffer(
     formData.get("ultimo_modello_unico") as File
   );
+  const configurazione = await toBuffer(
+    formData.get("configurazione") as File
+  );
   const iscrizione_albo = await toBuffer(
     formData.get("iscrizione_albo") as File
+  );
+  const patente = await toBuffer(
+    formData.get("patente") as File
   );
 
   const cliente = formData.get("cliente");
@@ -58,9 +64,7 @@ iscrizione_albo
           nome={nome as string}
           cognome={cognome as string}
           iban={iban as string}
-          cliente={cliente as string}
           marca_modello_auto={marca_modello_auto as string}
-          optional={optional as string}
           note={note as string}
           carburante={carburante as string}
           cambio={cambio as string}
@@ -88,6 +92,14 @@ iscrizione_albo
         {
           filename: iscrizione_albo.fileName,
           content: iscrizione_albo.bufferFile,
+        },
+        {
+          filename: configurazione.fileName,
+          content: configurazione.bufferFile,
+        },
+        {
+          filename: patente.fileName,
+          content: patente.bufferFile,
         },
       ],
     });

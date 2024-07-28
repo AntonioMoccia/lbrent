@@ -55,14 +55,14 @@ function Footer() {
                 <a href="tel:+393452966189">+39 3452966189</a>
               </span>
             </div>
-            <div className=" flex gap-2">
+{/*             <div className=" flex gap-2">
               <span className="  bg-black p-1 rounded-full">
                 <LuPhone color="white" />
               </span>
               <span className=" text-xs h-full flex justify-center items-center">
                 <a href="tel:+393452966189">+39 3452966189</a>
               </span>
-            </div>
+            </div> */}
           </div>
           <div className="h-full flex font-light justify-end flex-col gap-2 ">
             <div className=" pt-4 text-[0.6rem] text-left">
@@ -119,14 +119,7 @@ function Footer() {
           </div>
         </div>
         <div className=" gap-5 flex items-center justify-center w-full p-5 ">
-          <div className=" flex gap-2">
-            <span className="  bg-black p-1 rounded-full">
-              <LuPhone color="white" />
-            </span>
-            <span className=" text-xs h-full flex justify-center items-center">
-              <a href="tel:+393452966189">+39 3452966189</a>
-            </span>
-          </div>
+          
           <div className=" flex gap-2">
             <span className="  bg-black p-1 rounded-full">
               <LuPhone color="white" />

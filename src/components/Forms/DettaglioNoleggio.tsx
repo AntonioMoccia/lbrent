@@ -1,5 +1,11 @@
 import React from "react";
-import { OptionField, SelectField, TextAreaField, TextField } from "./Fields";
+import {
+  OptionField,
+  SelectField,
+  TextAreaField,
+  TextField,
+  UploadFile,
+} from "./Fields";
 import { FieldValues, UseFormReturn, useWatch } from "react-hook-form";
 
 interface DettaglioNoleggioProps {
@@ -8,13 +14,48 @@ interface DettaglioNoleggioProps {
 
 function DettaglioNoleggio(props: DettaglioNoleggioProps) {
   const { form } = props;
+  const ACCEPTED_FILE_TYPE = ["application/pdf"];
+  const MAX_FILE_SIZE_MB = 5; // Imposta la dimensione massima del file consentita in MB
 
   const {
     register,
     formState: { errors },
     control,
+    getValues,
+    trigger,
   } = form;
+  const UploadValidator = (targetValue: FileList, fields: any) => {
+    const fileSizeInMB = targetValue[0].size / (1024 * 1024);
 
+    if (ACCEPTED_FILE_TYPE.includes(targetValue[0].type)) {
+      const files = Object.values(fields).filter(
+        (key: any) =>
+          key instanceof FileList && key[0]?.name == targetValue[0]?.name
+      );
+      if (files.length > 1) {
+        return "Hai caricato due volte lo stesso file";
+      } else {
+        if (fileSizeInMB > MAX_FILE_SIZE_MB) {
+          return "Caricare un file max 5MB";
+        } else {
+          return true;
+        }
+      }
+    } else {
+      return "Caricare un file pdf";
+    }
+  };
+  const onChangeFileUpload = (e: any) => {
+    const formValues: any = getValues();
+    const targetName = e.currentTarget.name;
+    const triggers = Object.keys(formValues).filter(
+      (key) =>
+        formValues[key] instanceof FileList &&
+        key !== targetName &&
+        formValues[key].length > 0
+    );
+    trigger([...triggers]);
+  };
   const watcher = useWatch({ control });
   return (
     <>
@@ -22,17 +63,12 @@ function DettaglioNoleggio(props: DettaglioNoleggioProps) {
       <div className=" w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
         <TextField
           type="text"
-          placeholder="Cliente"
-          error={errors.cliente?.message as string}
-          value={watcher["cliente"]}
-          inputProps={register("cliente")}
-        />
-        <TextField
-          type="text"
           placeholder="Marca, modello, auto"
           error={errors.marca_modello_auto?.message as string}
           value={watcher["marca_modello_auto"]}
-          inputProps={register("marca_modello_auto")}
+          inputProps={register("marca_modello_auto", {
+            required: "Campo obbligatorio",
+          })}
         />
       </div>
       <div className=" w-full grid grid-cols-1 gap-4 mt-5">
@@ -60,8 +96,12 @@ function DettaglioNoleggio(props: DettaglioNoleggioProps) {
               value: "metano",
             },
             {
-              label: "Ibrido",
-              value: "ibrido",
+              label: "Ibrido/ benzina",
+              value: "ibrido/ benzina",
+            },
+            {
+              label: "Ibrido/ diesel",
+              value: "ibrido/ diesel",
             },
           ]}
         />
@@ -156,24 +196,19 @@ function DettaglioNoleggio(props: DettaglioNoleggioProps) {
               value: "50",
               label: "50 mila",
             },
-            {
-              value: "55",
-              label: "55 mila",
-            },
-            {
-              value: "60",
-              label: "60 mila",
-            },
           ]}
         />
       </div>
       <div className=" w-full grid grid-cols-1 gap-4 mt-5">
-        <TextAreaField
-          inputProps={register("optional")}
-          error={errors.optional?.message as string}
-          value={watcher["optional"]}
-          placeholder="Optionals"
-        />
+        <div className="p-2">
+          <UploadFile
+            testo="Vai sul sito del tuo marchio preferito, configura la tua auto e carica qui il file pdf della tua configurazione"
+            error={errors.configurazione?.message as string}
+            value={watcher["configurazione"]}
+            inputProps={register("configurazione")}
+            htmlFor="configurazione"
+          />
+        </div>
         <TextAreaField
           inputProps={register("note")}
           error={errors.note?.message as string}

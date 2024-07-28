@@ -22,6 +22,14 @@ export async function POST(request: Request) {
   const ultimo_modello_unico = await toBuffer(
     formData.get("ultimo_modello_unico") as File
   );
+  const configurazione = await toBuffer(
+    formData.get("configurazione") as File
+  );
+  const patente = await toBuffer(
+    formData.get("patente") as File
+  );
+
+
 
   const quadro_iq = await toBuffer(formData.get("quadro_iq") as File);
 
@@ -34,7 +42,6 @@ export async function POST(request: Request) {
 
   const cliente = formData.get("cliente");
   const marca_modello_auto = formData.get("marca_modello_auto");
-  const optional = formData.get("optional");
   const note = formData.get("note");
   const carburante = formData.get("carburante");
   const cambio = formData.get("cambio");
@@ -54,10 +61,7 @@ export async function POST(request: Request) {
           iban={iban as string}
           phonenumber={phonenumber as string}
           email={email as string}
-
-          cliente={cliente as string}
           marca_modello_auto={marca_modello_auto as string}
-          optional={optional as string}
           note={note as string}
           carburante={carburante as string}
           cambio={cambio as string}
@@ -85,6 +89,14 @@ export async function POST(request: Request) {
         {
           filename: quadro_iq.fileName,
           content: quadro_iq.bufferFile,
+        },
+        {
+          filename: configurazione.fileName,
+          content: configurazione.bufferFile,
+        },
+        {
+          filename: patente.fileName,
+          content: patente.bufferFile,
         },
       ],
     });

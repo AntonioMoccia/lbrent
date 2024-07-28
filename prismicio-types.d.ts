@@ -388,7 +388,7 @@ export interface CarListSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   segmento: prismic.SelectField<
-    "utilitaria" | "luxury car" | "suv" | "crossover"
+    "utilitaria" | "luxury-sportive" | "suv" | "crossover"
   >;
 
   /**

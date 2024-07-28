@@ -78,6 +78,17 @@ function SocietaCooperativaForm() {
               htmlFor="documento_identita_firmatario"
             />
             <UploadFile
+              testo="Patente"
+              error={errors.patente?.message as string}
+              value={watcher["patente"]}
+              inputProps={register("patente", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
+              htmlFor="patente"
+            />
+            <UploadFile
               testo="Tesserino codice fiscale firmatario"
               error={
                 errors.tesserino_codice_fiscale_firmatario?.message as string
@@ -102,15 +113,37 @@ function SocietaCooperativaForm() {
               htmlFor="visura_camerale"
             />
             <UploadFile
-              testo="Ultimo bilacio depositato + nota integrativa + ricevuta di presentazione"
-              error={errors.ultimo_modello_unico?.message as string}
-              value={watcher["ultimo_modello_unico"]}
-              inputProps={register("ultimo_modello_unico", {
+              testo="Ultimo bilacio depositato"
+              error={errors.ultimo_bilancio?.message as string}
+              value={watcher["ultimo_bilancio"]}
+              inputProps={register("ultimo_bilancio", {
                 required: "Campo obbligatorio",
                 validate: UploadValidator,
                 onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
               })}
-              htmlFor="ultimo_modello_unico"
+              htmlFor="ultimo_bilancio"
+            />
+            <UploadFile
+              testo="Nota integrativa"
+              error={errors.nota_integrativa?.message as string}
+              value={watcher["nota_integrativa"]}
+              inputProps={register("nota_integrativa", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
+              htmlFor="nota_integrativa"
+            />
+            <UploadFile
+              testo="Ricevuta di presentazione"
+              error={errors.ricevuta_di_presentazione?.message as string}
+              value={watcher["ricevuta_di_presentazione"]}
+              inputProps={register("ricevuta_di_presentazione", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
+              htmlFor="ricevuta_di_presentazione"
             />
           </div>
 
@@ -122,14 +155,18 @@ function SocietaCooperativaForm() {
               placeholder="Nome"
               error={errors.nome?.message as string}
               value={watcher["nome"]}
-              inputProps={register("nome")}
+              inputProps={register("nome", {
+                required: "Campo obbligatorio",
+              })}
             />
             <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
               value={watcher["cognome"]}
-              inputProps={register("cognome")}
+              inputProps={register("cognome", {
+                required: "Campo obbligatorio",
+              })}
             />
             <TextField
               type="text"
@@ -155,7 +192,7 @@ function SocietaCooperativaForm() {
             />
             <TextField
               type="text"
-              placeholder="Iban"
+              placeholder="Iban (facoltativo)"
               error={errors.iban?.message as string}
               value={watcher["iban"]}
               inputProps={register("iban")}

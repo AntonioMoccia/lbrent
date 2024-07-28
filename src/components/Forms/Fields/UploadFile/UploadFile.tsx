@@ -46,7 +46,7 @@ function UploadFile(props: UploadFileProps) {
             </div>
 
             <div className=" border-t-2 h-[5rem] w-full border-black  rounded-2xl ">
-              <h1 className=" text-[0.7rem] h-full w-full flex items-center justify-start font-bold px-2">
+              <h1 className=" text-[0.7rem] h-full w-full flex items-center justify-start font-bold leading-4 px-2">
                 {props.testo}
               </h1>
             </div>

@@ -118,6 +118,17 @@ function DittaIndividualeForm() {
               htmlFor="documento_identita"
             />
             <UploadFile
+              testo="Patente"
+              error={errors.patente?.message as string}
+              value={watcher["patente"]}
+              inputProps={register("patente", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: onChangeFileUpload,
+              })}
+              htmlFor="patente"
+            />
+            <UploadFile
               testo="Tesserino codice fiscale"
               error={errors.tesserino_codice_fiscale?.message as string}
               value={watcher["tesserino_codice_fiscale"]}
@@ -171,14 +182,18 @@ function DittaIndividualeForm() {
               placeholder="Nome"
               error={errors.nome?.message as string}
               value={watcher["nome"]}
-              inputProps={register("nome")}
+              inputProps={register("nome",{
+                required: "Campo obbligatorio",
+              })}
             />
             <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
               value={watcher["cognome"]}
-              inputProps={register("cognome")}
+              inputProps={register("cognome",{
+                required: "Campo obbligatorio",
+              })}
             />
 
             <TextField
@@ -205,7 +220,7 @@ function DittaIndividualeForm() {
             />
             <TextField
               type="text"
-              placeholder="Iban"
+              placeholder="Iban (facoltativo)"
               error={errors.iban?.message as string}
               value={watcher["iban"]}
               inputProps={register("iban")}

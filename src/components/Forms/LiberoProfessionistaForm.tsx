@@ -1,7 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { OptionField, SelectField, TextAreaField, TextField, UploadFile } from "./Fields";
+import {
+  OptionField,
+  SelectField,
+  TextAreaField,
+  TextField,
+  UploadFile,
+} from "./Fields";
 import axios from "axios";
 import { FaCheckCircle } from "react-icons/fa";
 import { useToast } from "../toast/use-toast";
@@ -24,7 +30,7 @@ function LiberoProfessionistaForm() {
     trigger,
     control,
     getValues,
-  } = form
+  } = form;
 
   const watcher = useWatch({ control });
 
@@ -74,6 +80,17 @@ function LiberoProfessionistaForm() {
                 onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
               })}
               htmlFor="documento_identita"
+            />
+             <UploadFile
+              testo="Patente"
+              error={errors.patente?.message as string}
+              value={watcher["patente"]}
+              inputProps={register("patente", {
+                required: "Campo obbligatorio",
+                validate: UploadValidator,
+                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
+              })}
+              htmlFor="patente"
             />
             <UploadFile
               testo="Tesserino codice fiscale"
@@ -129,14 +146,18 @@ function LiberoProfessionistaForm() {
               placeholder="Nome"
               error={errors.nome?.message as string}
               value={watcher["nome"]}
-              inputProps={register("nome")}
+              inputProps={register("nome", {
+                required: "Campo obbligatorio",
+              })}
             />
             <TextField
               type="text"
               placeholder="Cognome"
               error={errors.cognome?.message as string}
               value={watcher["cognome"]}
-              inputProps={register("cognome")}
+              inputProps={register("cognome", {
+                required: "Campo obbligatorio",
+              })}
             />
             <TextField
               type="text"
@@ -162,7 +183,7 @@ function LiberoProfessionistaForm() {
             />
             <TextField
               type="text"
-              placeholder="Iban"
+              placeholder="Iban (facoltativo)"
               error={errors.iban?.message as string}
               value={watcher["iban"]}
               inputProps={register("iban")}

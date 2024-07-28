@@ -40,17 +40,10 @@ function SelectField(props: SelectFieldProps) {
           name={name}
           rules={{
             required:"Campo obbligatorio"
-/*             validate: (val, fields) => {
-              if(!fields[name]){
-                return "Campo obbligatorio";
-              }else{
-                true
-              }
-            },
- */          }}
+          }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{placeholder}</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>

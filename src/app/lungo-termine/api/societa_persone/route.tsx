@@ -6,6 +6,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 //documento_identita
 export async function POST(request: Request) {
   const formData = await request.formData();
+
+
   const documento_identita_firmatario = await toBuffer(
     formData.get("documento_identita_firmatario") as File
   );
@@ -21,6 +23,14 @@ export async function POST(request: Request) {
   const quadro_iq = await toBuffer(formData.get("quadro_iq") as File);
   const ultimo_modello_unico_socio_accomodatario = await toBuffer(
     formData.get("ultimo_modello_unico_socio_accomodatario") as File
+  );
+  
+  const configurazione = await toBuffer(
+    formData.get("configurazione") as File
+  );
+  
+  const patente = await toBuffer(
+    formData.get("patente") as File
   );
   
   /**
@@ -59,9 +69,7 @@ ultimo_modello_unico_socio_accomodatario
           nome={nome as string}
           cognome={cognome as string}
           iban={iban as string}
-          cliente={cliente as string}
           marca_modello_auto={marca_modello_auto as string}
-          optional={optional as string}
           note={note as string}
           carburante={carburante as string}
           cambio={cambio as string}
@@ -93,6 +101,14 @@ ultimo_modello_unico_socio_accomodatario
         {
           filename: ultimo_modello_unico_socio_accomodatario.fileName,
           content: ultimo_modello_unico_socio_accomodatario.bufferFile,
+        },
+        {
+          filename: configurazione.fileName,
+          content: configurazione.bufferFile,
+        },
+        {
+          filename: patente.fileName,
+          content: patente.bufferFile,
         },
       ],
     });

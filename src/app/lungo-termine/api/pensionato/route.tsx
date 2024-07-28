@@ -15,6 +15,13 @@ export async function POST(request: Request) {
   const cedolino_pensione_730_cud = await toBuffer(
     formData.get("cedolino_pensione_730_cud") as File
   );
+  const configurazione = await toBuffer(
+    formData.get("configurazione") as File
+  );
+
+  const patente = await toBuffer(
+    formData.get("patente") as File
+  );
 
 
   const nome = formData.get("nome");
@@ -46,9 +53,7 @@ export async function POST(request: Request) {
           iban={iban as string}
           phonenumber={phonenumber as string}
           email={email as string}
-          cliente={cliente as string}
           marca_modello_auto={marca_modello_auto as string}
-          optional={optional as string}
           note={note as string}
           carburante={carburante as string}
           cambio={cambio as string}
@@ -68,7 +73,15 @@ export async function POST(request: Request) {
         {
           filename: cedolino_pensione_730_cud.fileName,
           content: cedolino_pensione_730_cud.bufferFile,
-        }
+        },
+        {
+          filename: configurazione.fileName,
+          content: configurazione.bufferFile,
+        },
+        {
+          filename: patente.fileName,
+          content: patente.bufferFile,
+        },
       ],
     });
 

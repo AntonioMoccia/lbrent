@@ -15,8 +15,20 @@ export async function POST(request: Request) {
   const visura_camerale = await toBuffer(
     formData.get("visura_camerale") as File
   );
-  const ultimo_modello_unico = await toBuffer(
-    formData.get("ultimo_modello_unico") as File
+  const configurazione = await toBuffer(
+    formData.get("configurazione") as File
+  );
+  const patente = await toBuffer(
+    formData.get("patente") as File
+  );
+  const ultimo_bilancio = await toBuffer(
+    formData.get("ultimo_bilancio") as File
+  );
+  const nota_integrativa = await toBuffer(
+    formData.get("nota_integrativa") as File
+  );
+  const ricevuta_di_presentazione = await toBuffer(
+    formData.get("ricevuta_di_presentazione") as File
   );
 
   const nome = formData.get("nome");
@@ -25,9 +37,7 @@ export async function POST(request: Request) {
   const phonenumber = formData.get("phonenumber");
   const email = formData.get("email");
 
-  const cliente = formData.get("cliente");
   const marca_modello_auto = formData.get("marca_modello_auto");
-  const optional = formData.get("optional");
   const note = formData.get("note");
   const carburante = formData.get("carburante");
   const cambio = formData.get("cambio");
@@ -47,9 +57,7 @@ export async function POST(request: Request) {
           nome={nome as string}
           cognome={cognome as string}
           iban={iban as string}
-          cliente={cliente as string}
           marca_modello_auto={marca_modello_auto as string}
-          optional={optional as string}
           note={note as string}
           carburante={carburante as string}
           cambio={cambio as string}
@@ -71,8 +79,24 @@ export async function POST(request: Request) {
           content: visura_camerale.bufferFile,
         },
         {
-          filename: ultimo_modello_unico.fileName,
-          content: ultimo_modello_unico.bufferFile,
+          filename: configurazione.fileName,
+          content: configurazione.bufferFile,
+        },
+        {
+          filename: patente.fileName,
+          content: patente.bufferFile,
+        },
+        {
+          filename: ultimo_bilancio.fileName,
+          content: ultimo_bilancio.bufferFile,
+        },
+        {
+          filename: nota_integrativa.fileName,
+          content: nota_integrativa.bufferFile,
+        },
+        {
+          filename: ricevuta_di_presentazione.fileName,
+          content: ricevuta_di_presentazione.bufferFile,
         },
       ],
     });

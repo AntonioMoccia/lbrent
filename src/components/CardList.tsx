@@ -113,8 +113,8 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
       label: "Suv",
     },
     {
-      value: "luxury car",
-      label: "Luxury car",
+      value: "luxury-sportive",
+      label: "Luxury car / sportive",
     },
   ];
 
