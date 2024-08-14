@@ -161,17 +161,6 @@ function DittaIndividualeForm() {
               })}
               htmlFor="ultimo_modello_unico"
             />
-            <UploadFile
-              testo="Quadro IQ"
-              error={errors.quadro_iq?.message as string}
-              value={watcher["quadro_iq"]}
-              inputProps={register("quadro_iq", {
-                required: "Campo obbligatorio",
-                validate: UploadValidator,
-                onChange: onChangeFileUpload,
-              })}
-              htmlFor="quadro_iq"
-            />
           </div>
 
           <h1 className="w-full px-5 font-bold mt-5">Dati personali</h1>

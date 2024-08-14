@@ -31,9 +31,6 @@ export async function POST(request: Request) {
 
 
 
-  const quadro_iq = await toBuffer(formData.get("quadro_iq") as File);
-
-
   const nome = formData.get("nome");
   const cognome = formData.get("cognome");
   const iban = formData.get("iban");
@@ -85,10 +82,6 @@ export async function POST(request: Request) {
         {
           filename: ultimo_modello_unico.fileName,
           content: ultimo_modello_unico.bufferFile,
-        },
-        {
-          filename: quadro_iq.fileName,
-          content: quadro_iq.bufferFile,
         },
         {
           filename: configurazione.fileName,

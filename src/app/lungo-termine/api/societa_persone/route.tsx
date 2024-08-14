@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   const ultimo_modello_unico_societa = await toBuffer(
     formData.get("ultimo_modello_unico_societa") as File
   );
-  const quadro_iq = await toBuffer(formData.get("quadro_iq") as File);
+
   const ultimo_modello_unico_socio_accomodatario = await toBuffer(
     formData.get("ultimo_modello_unico_socio_accomodatario") as File
   );
@@ -38,7 +38,6 @@ export async function POST(request: Request) {
 tesserino_codice_fiscale
 visura_camerale
 ultimo_modello_unico_societa
-quadro_iq
 ultimo_modello_unico_socio_accomodatario
   */
 
@@ -93,10 +92,6 @@ ultimo_modello_unico_socio_accomodatario
         {
           filename: ultimo_modello_unico_societa.fileName,
           content: ultimo_modello_unico_societa.bufferFile,
-        },
-        {
-          filename: quadro_iq.fileName,
-          content: quadro_iq.bufferFile,
         },
         {
           filename: ultimo_modello_unico_socio_accomodatario.fileName,

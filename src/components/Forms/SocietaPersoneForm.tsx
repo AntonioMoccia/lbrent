@@ -121,17 +121,6 @@ function SocietaPersoneForm() {
               htmlFor="ultimo_modello_unico_societa"
             />
             <UploadFile
-              testo="Quadro IQ"
-              error={errors.quadro_iq?.message as string}
-              value={watcher["quadro_iq"]}
-              inputProps={register("quadro_iq", {
-                required: "Campo obbligatorio",
-                validate: UploadValidator,
-                onChange: (e) => onChangeFileUpload(e, trigger, getValues()),
-              })}
-              htmlFor="quadro_iq"
-            />
-            <UploadFile
               testo="Ultimo modello unico socio accomodatario"
               error={
                 errors.ultimo_modello_unico_socio_accomodatario
