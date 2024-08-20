@@ -5,7 +5,7 @@ import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
 import { Metadata } from "next";
-
+import { Suspense} from "react"
 export const metadata: Metadata = {
   title: "LB Rent - breve termine",
   description: "Scopri la libertà di viaggiare con il nostro noleggio a breve termine! Con tariffe competitive e una vasta gamma di veicoli moderni e affidabili, puoi noleggiare la tua auto ideale per brevi periodi senza complicazioni. Scegli la comodità e la flessibilità del noleggio a breve termine e rendi ogni viaggio un'esperienza indimenticabile.",
@@ -19,7 +19,7 @@ async function BreveTermine() {
     return page.data.slices.filter((slice) => slice.slice_type === type)[0];
   }
   return (
-    <div>
+    <Suspense>
       <section
         className={`bg-black justify-start flex flex-col items-center lg:pt-10
          rounded-t-3xl text-white h-1/2 `}
@@ -52,7 +52,7 @@ async function BreveTermine() {
       <section>
         <CardList Cards={filterSliceByType("car_list")} />
       </section>
-    </div>
+    </Suspense>
   );
 }
 
