@@ -160,3 +160,10 @@
 #home-subtitle  .title-word .char{
   opacity: 0;
 }
+
+
+
+#card-slider .swiper-wrapper{
+  height: 60vh;
+
+}

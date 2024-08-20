@@ -164,9 +164,9 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="white"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
@@ -198,7 +198,11 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                           value={item.value as string}
                           checked={
                             filters.filter((filter: any) => {
-                              return filter.field == "segmento" && filter.field == "segmento" && filter.value.includes(item.value)
+                              return (
+                                filter.field == "segmento" &&
+                                filter.field == "segmento" &&
+                                filter.value.includes(item.value)
+                              );
                             }).length > 0
                           }
                         />
@@ -219,16 +223,15 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="white"
-                          stroke-width="4"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         >
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
                     );
                   })}
-
                 </fieldset>
               </Item>
             </div>
