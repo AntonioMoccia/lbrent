@@ -19,7 +19,7 @@ async function BreveTermine() {
     return page.data.slices.filter((slice) => slice.slice_type === type)[0];
   }
   return (
-    <Suspense>
+    <div>
       <section
         className={`bg-black justify-start flex flex-col items-center lg:pt-10
          rounded-t-3xl text-white h-1/2 `}
@@ -52,7 +52,7 @@ async function BreveTermine() {
       <section>
         <CardList Cards={filterSliceByType("car_list")} />
       </section>
-    </Suspense>
+    </div>
   );
 }
 
