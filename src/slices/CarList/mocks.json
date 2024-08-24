@@ -68,7 +68,7 @@
 						"carburante",
 						{
 							"__TYPE__": "FieldContent",
-							"value": "Benzina",
+							"value": "Ibrido (benzina)",
 							"type": "Select"
 						}
 					],

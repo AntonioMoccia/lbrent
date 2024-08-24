@@ -92,7 +92,9 @@
             "placeholder": "",
             "options": [
               "Benzina",
-              "Diesel"
+              "Diesel",
+              "Ibrido (benzina)",
+              "Ibrido (diesel)"
             ],
             "default_value": "Benzina"
           }

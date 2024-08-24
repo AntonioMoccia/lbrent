@@ -22,22 +22,18 @@ function Card({
 }: Content.CarListSliceDefaultItem) {
   const [isOpenedSlider, setIsOpenedSlider] = useState(false);
 
-    useEffect(() => {
-    const disableScroll = ()=>{}
-
-    let scrollDisabled;
-
-    if(isOpenedSlider){
-      document.body.style.overflowY='hidden'
-    }else{
-      document.body.style.overflowY='auto'
+  useEffect(() => {
+    if (isOpenedSlider) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
     }
   }, [isOpenedSlider]);
   return (
     <Suspense fallback={<SkeletonCard />}>
       <div
         onClick={() => setIsOpenedSlider(true)}
-        className=" bg-black rounded-2xl items-start flex flex-col justify-between py-3 px-2 border-2 max-h-60 max-w-60 border-white min-h-60"
+        className=" bg-black rounded-2xl items-start flex flex-col justify-between py-3 px-2 border-2 max-h-65 max-w-60 border-white min-h-65"
       >
         <div className=" relative top-0 min-h-[3rem]">
           <h1 className=" text-[70%] font-bold text-white">{titolo}</h1>
@@ -47,7 +43,7 @@ function Card({
             </span>
           )}
         </div>
-        <div className=" cursor-pointer h-[65%] pb-2 relative top-0">
+        <div className=" cursor-pointer h-[9em] pb-2 relative top-0">
           <Image
             className="h-full rounded object-cover object-center"
             quality={60}
@@ -60,25 +56,28 @@ function Card({
             src={image.url!}
           />
         </div>
-
-        <div className=" w-full gap-1 relative top-0 flex flex-wrap">
-          <div className="text-[0.5rem] bg-gray-200 px-2 py-1 rounded-lg flex items-center justify-around gap-2">
-            <span>
-              <LuUser2 className="h-3 w-3" />
-            </span>
-            {posti}
-          </div>
-
-          <div className="flex font-semibold gap-1">
-            <div className=" gap-1 text-[0.5rem] bg-gray-200 flex px-2 py-1 rounded-lg">
-              <span className="h-3 w-3">
-                <TransmissionIcon />
-              </span>{" "} {cambio}
+        <div className=" min-h-8 flex items-center flex-col justify-end">
+          <div className=" w-full gap-1 relative top-0 flex flex-wrap">
+            <div className="text-[0.5rem] bg-gray-200 px-2 py-1 rounded-lg flex items-center justify-around gap-2">
+              <span>
+                <LuUser2 className="h-3 w-3" />
+              </span>
+              {posti}
             </div>
-            <div className=" gap-1 text-[0.5rem] bg-gray-200 flex px-2 py-1 rounded-lg">
-              <span className="h-3 w-3">
-                <FuelIcon className=" w-full h-full" />
-              </span>{" "} {carburante}
+
+            <div className="flex font-semibold gap-1">
+              <div className=" gap-1 text-[0.5rem] bg-gray-200 flex px-2 py-1 rounded-lg">
+                <span className="h-3 w-3">
+                  <TransmissionIcon />
+                </span>{" "}
+                {cambio}
+              </div>
+              <div className=" gap-1 text-[0.5rem] bg-gray-200 flex px-2 py-1 rounded-lg">
+                <span className="h-3 w-3">
+                  <FuelIcon className=" w-full h-full" />
+                </span>{" "}
+                {carburante}
+              </div>
             </div>
           </div>
         </div>
@@ -127,7 +126,7 @@ function Card({
                         <div className=" flex justify-center items-center flex-col w-auto h-full">
                           <Image
                             quality={60}
-                             priority={true}
+                            priority={true}
                             height={secondimage.dimensions?.height}
                             width={secondimage.dimensions?.width}
                             src={secondimage.url!}

@@ -239,7 +239,7 @@ function CardList({ Cards }: { Cards: Content.CarListSlice }) {
         </div>
       </section>
 
-      <div className=" flex px-1 py-5 flex-col justify-start items-center gap-4 bg-black max-h-[calc(100vh-8rem)] min-h-[750px] ">
+      <div className=" flex px-1 py-5 flex-col justify-start items-center gap-4 bg-black  min-h-[750px] ">
         <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 p-2 h-auto max-w-screen-md">
           {currentItems.map(
             (item: Content.CarListSliceDefaultItem, i: number) => (

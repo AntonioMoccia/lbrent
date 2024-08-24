@@ -411,7 +411,10 @@ export interface CarListSliceDefaultItem {
    * - **API ID Path**: car_list.items[].carburante
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  carburante: prismic.SelectField<"Benzina" | "Diesel", "filled">;
+  carburante: prismic.SelectField<
+    "Benzina" | "Diesel" | "Ibrido (benzina)" | "Ibrido (diesel)",
+    "filled"
+  >;
 }
 
 /**
